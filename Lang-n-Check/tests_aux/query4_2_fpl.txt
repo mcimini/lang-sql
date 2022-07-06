@@ -1,0 +1,4 @@
+=== QUERY 4: TABLE ===
+opname		parg
+
+head		emptyList

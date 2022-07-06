@@ -1,0 +1,4 @@
+=== QUERY 2: TABLE ===
+opname		arg-number
+
+pair		1

@@ -1,0 +1,4 @@
+=== QUERY 4: TABLE ===
+opname		parg
+
+if		ff
