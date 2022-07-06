@@ -66,8 +66,8 @@ Query 6: What is the state of the language? <br />
 Lines 36-38 of "queries.lsql"
 <ul>
 <li> Returns <b>Heap</b> in [5], see <a href = "tests_aux/state_references.txt"> output table for stlc_ref_only_grammar.lan</a>.
-	<br />Returns <b>Continuation</b> in CK of [6], see <a href = "state_CK.txt"> output table for stlc_CK.lan</a>.
-	<br />Returns <b>Continuation</b> and <b>Environment</b> in CEK of [6], see <a href = "state_CEK.txt"> output table for stlc_CEK.lan</a>.
+	<br />Returns <b>Continuation</b> in CK of [6], see <a href = "tests_aux/state_CK.txt"> output table for stlc_CK.lan</a>.
+	<br />Returns <b>Continuation</b> and <b>Environment</b> in CEK of [6], see <a href = "tests_aux/state_CEK.txt"> output table for stlc_CEK.lan</a>.
 <br />Returns an empty table for [1], [2], [3], [4].
 </ul>
 

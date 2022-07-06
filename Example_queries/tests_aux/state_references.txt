@@ -2,5 +2,4 @@
 relation		arg
 
 step		Heap
-step		Heap
 
