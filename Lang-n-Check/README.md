@@ -45,7 +45,7 @@ Negative tests for "queries.lsql":  <br />
 	<br /> returns: <b>if</b> does not handle <b>ff</b>, see <a href = "tests_aux/query4_1_fpl.txt">output table</a>. 
 
 <li> Query 4 (line 33): Do Reduction Rules of Elimination Forms Handle All the Values of Their Type?
-	<br /> remove <b>(head (emptyList)) --> (raise (zero )).</b> from fpl_cbv.lan
+	<br /> remove <b>(head (emptyList)) --> (raise (zero)).</b> from fpl_cbv.lan
 	<br /> returns: <b>head</b> does not handle <b>emptyList</b>, see <a href = "tests_aux/query4_2_fpl.txt">output table</a>. 
 </ul>
 
