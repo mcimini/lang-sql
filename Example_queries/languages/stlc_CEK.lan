@@ -1,0 +1,7 @@
+PreExpression E ::= x | (abs T (x)E) | (app E E)
+Value V ::= (abs T1 R2)
+Error ::= 
+Continuation K ::= (mt) | (arg E Env K) | (fun V Env K)
+Environment Env ::= (emptyEnv ) | (consEnv E E Env)
+Relation ::= (step Expression Environment Continuation Expression Environment Continuation)
+

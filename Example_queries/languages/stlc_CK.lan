@@ -1,0 +1,6 @@
+Expression E ::= x | (abs T (x)E) | (app E E)
+Value V ::= (abs T1 R2)
+Error ::= 
+Continuation K ::= (mt) | (arg E K) | (fun V K)
+Relation ::= (step Expression Continuation Expression Continuation)
+

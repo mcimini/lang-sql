@@ -1,0 +1,39 @@
+=== QUERY 1: TABLE ===
+opname		count
+
+abs		1
+fold		1
+app		1
+unfold		1
+
+
+
+=== QUERY 2: TABLE ===
+val		type
+
+fold		mu
+abs		arrow
+
+
+
+=== QUERY 3: TABLE ===
+opname
+
+app
+unfold
+
+
+
+=== QUERY 4: EMPTY TABLE ===
+
+
+
+=== QUERY 5: TABLE ===
+opname		category-info
+
+mu		Type
+
+
+
+=== QUERY 6: EMPTY TABLE ===
+

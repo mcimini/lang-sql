@@ -1,0 +1,94 @@
+fpl.cbv.lan
+
+=== QUERY 1 ===
+
+remove (app C e) from Context
+
+output:
+=== QUERY 1: TABLE ===
+opname		arg-number
+
+app		0
+
+
+
+
+=== QUERY 2 ===
+
+remove (pair v C)  from Context
+
+output:
+=== QUERY 2: TABLE ===
+opname		arg-number
+
+pair		1
+
+
+
+
+=== QUERY 3 ===
+
+remove (app v C)  from Context
+
+output:
+=== QUERY 3: TABLE ===
+opname		arg-number
+
+app		1
+
+
+
+=== QUERY 4 ===
+
+1)
+remove (if (ff ) E1 E2) --> E2.
+
+output:
+=== QUERY 4: TABLE ===
+opname		parg
+
+if		ff
+
+
+
+2)
+remove (head (emptyList )) --> (raise (zero )).
+
+output:
+=== QUERY 4: TABLE ===
+opname		parg
+
+head		emptyList
+
+
+
+=== QUERY 5 ===
+
+error is typed at a constructor. 
+
+Gamma |- (raise E1) : T <== Gamma |- E1 : (int ).
+==>
+Gamma |- (raise E1) : (int ) <== Gamma |- E1 : (int ).
+
+output:
+=== QUERY 5: TABLE ===
+opname
+
+raise
+
+
+=== QUERY 6 ===
+
+the type variable of the error also appears in the premises. 
+
+Gamma |- (raise E1) : T <== Gamma |- E1 : (int ).
+==>
+Gamma |- (raise E1) : T <== Gamma |- E1 : T.
+
+output:
+=== QUERY 6: EMPTY TABLE ===
+
+which is not correct, as we should return the recordo of the type variable. 
+
+
+

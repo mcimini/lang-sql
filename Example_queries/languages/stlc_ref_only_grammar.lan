@@ -1,0 +1,6 @@
+Expression E ::= x | (abs T (x)E) | (app E E)
+Value V ::= (abs T1 R2)
+Error ::= 
+Heap H ::= (emptyH ) | (consH E H)
+Relation ::= (step Expression Heap Expression Heap)
+

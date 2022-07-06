@@ -1,0 +1,69 @@
+=== QUERY 1: TABLE ===
+opname		count
+
+append		1
+reverse		1
+abs		1
+zero		1
+succ		1
+tt		1
+ff		1
+emptyList		1
+cons		1
+app		1
+let		1
+pred		1
+isZero		1
+if		1
+head		1
+tail		1
+fix		1
+letrec		1
+myerror		1
+
+
+
+=== QUERY 2: TABLE ===
+val		type
+
+cons		list
+emptyList		list
+ff		bool
+tt		bool
+succ		int
+zero		int
+abs		arrow
+
+
+
+=== QUERY 3: TABLE ===
+opname
+
+append
+append
+reverse
+reverse
+app
+pred
+pred
+isZero
+isZero
+if
+if
+head
+head
+tail
+tail
+
+
+
+=== QUERY 4: EMPTY TABLE ===
+
+
+
+=== QUERY 5: EMPTY TABLE ===
+
+
+
+=== QUERY 6: EMPTY TABLE ===
+

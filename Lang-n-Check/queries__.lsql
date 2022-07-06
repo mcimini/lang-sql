@@ -1,0 +1,34 @@
+DEFINE CanonicalForms = (SELECT GET-OPNAME(term) AS val, GET-OPNAME(LAST(args, 0)) AS type FROM Value, rule 
+						 WHERE predname = typeOf AND role = CONCL AND GET-OPNAME(term) = GET-OPNAME(LAST(args, 1))  )
+
+DEFINE EliminationForms = (SELECT DISTINCT opname FROM SourceOpWithArgs WHERE arg-number = 0 GROUP BY opname HAVING ALL arg IS CONSTRUCTED AND arg IS DERIVED BY Value)
+
+DEFINE SourceOpWithArgs = (SELECT GET-OPNAME(NTH(args,0)) AS opname, GET-ARGS(NTH(args,0)) AS ROWS arg FROM rule WHERE predname = step AND role = CONCL )
+
+DEFINE PrincipalArgPositions = (SELECT opname, 0 AS arg-number FROM EliminationForms)
+
+DEFINE EvalPositions = (SELECT opname, arg-number 
+						FROM (SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Context) 
+						WHERE arg IS Context VAR)
+
+PrincipalArgPositions EXCEPT EvalPositions
+
+DEFINE ValuePositions = (SELECT opname, arg-number 
+						 FROM (SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Value) 
+						 WHERE arg IS Value VAR)
+	
+ValuePositions EXCEPT EvalPositions
+
+DEFINE ValuePosInRules = (SELECT opname, arg-number FROM SourceOpWithArgs WHERE arg IS Value VAR)
+
+ValuePosInRules EXCEPT EvalPositions
+
+DEFINE ElimWithPArg = (SELECT opname, GET-OPNAME(arg) AS parg FROM SourceOpWithArgs 
+					   WHERE arg-number = 0 GROUP BY opname HAVING ALL arg IS CONSTRUCTED AND arg IS DERIVED BY Value)
+
+DEFINE ElimWithType = (SELECT DISTINCT opname, type AS elimType FROM ElimWithPArg, CanonicalForms WHERE parg = val)
+
+DEFINE ElimWithValues = (SELECT opname, val AS parg FROM ElimWithType, CanonicalForms WHERE elimType = type)
+
+ElimWithValues EXCEPT ElimWithPArg
+

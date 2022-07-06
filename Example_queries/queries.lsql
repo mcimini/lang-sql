@@ -1,0 +1,38 @@
+
+SELECT opname, COUNT() AS count
+FROM (SELECT GET-OPNAME(LAST(args,1)) AS opname, rulename FROM rule WHERE predname = typeOf AND role = CONCL)
+GROUP BY opname
+
+SELECT GET-OPNAME(term) AS val, GET-OPNAME(LAST(args, 0)) AS type 
+FROM Value, rule
+WHERE predname = typeOf AND role = CONCL AND GET-OPNAME(term) = GET-OPNAME(LAST(args, 1))
+
+
+DEFINE SourceOpsWithArgs = 
+	SELECT GET-OPNAME(NTH(args,0)) AS opname, GET-ARGS(NTH(args,0)) AS ROWS arg
+	FROM rule WHERE predname = step AND role = CONCL
+
+SELECT DISTINCT opname 
+FROM SourceOpsWithArgs
+WHERE arg-number = 0
+GROUP BY opname
+HAVING ALL (arg IS CONSTRUCTED AND arg IS DERIVED BY Value)
+
+SELECT opname, arg-number
+FROM
+	(SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Context), 
+	grammar-info
+WHERE arg IS BOUND
+AND GET-BOUND-TERM(arg) = meta-var
+AND category-info = Context
+
+
+SELECT opname, category-info FROM
+(SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Type),
+grammar-info
+WHERE arg IS BOUND AND GET-BOUND-VAR(arg) = obj-var
+
+
+SELECT DISTINCT relation, arg 
+FROM (SELECT relation, rel-args AS ROWS arg FROM declarationp)
+WHERE relation = step AND NOT (arg = Expression)

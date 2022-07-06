@@ -1,0 +1,35 @@
+=== QUERY 1: TABLE ===
+opname		count
+
+abs		1
+app		1
+fix		1
+let		1
+letrec		1
+
+
+
+=== QUERY 2: TABLE ===
+val		type
+
+abs		arrow
+
+
+
+=== QUERY 3: TABLE ===
+opname
+
+app
+
+
+
+=== QUERY 4: EMPTY TABLE ===
+
+
+
+=== QUERY 5: EMPTY TABLE ===
+
+
+
+=== QUERY 6: EMPTY TABLE ===
+

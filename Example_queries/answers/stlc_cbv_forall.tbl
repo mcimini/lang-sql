@@ -1,0 +1,39 @@
+=== QUERY 1: TABLE ===
+opname		count
+
+abs		1
+absT		1
+app		1
+appT		1
+
+
+
+=== QUERY 2: TABLE ===
+val		type
+
+absT		all
+abs		arrow
+
+
+
+=== QUERY 3: TABLE ===
+opname
+
+app
+appT
+
+
+
+=== QUERY 4: EMPTY TABLE ===
+
+
+
+=== QUERY 5: TABLE ===
+opname		category-info
+
+all		Type
+
+
+
+=== QUERY 6: EMPTY TABLE ===
+
