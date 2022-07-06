@@ -30,7 +30,7 @@ Negative tests for "queries.lsql":  <br />
 <ul>
 <li> Query 1 (line 14): Do Evaluation Contexts Cover for the Principal Arguments of Elimination Forms? 
 	<br /> remove <b>(app C e)</b> from <b>Context</b> from fpl.cbv.lan
-	<br /> returns: <b>app misses an evaluation context for argument 0 (first argument), see <a href = "tests_aux/query1_fpl.txt">output table</a>. 
+	<br /> returns: <b>app</b> misses an evaluation context for argument 0 (first argument), see <a href = "tests_aux/query1_fpl.txt">output table</a>. 
 
 <li> Query 2 (line 20): Do Evaluation Contexts Cover for the Evaluated Arguments of Values?? 
 	<br /> remove <b>(pair v C)</b> from <b>Context</b> from fpl.cbv.lan
