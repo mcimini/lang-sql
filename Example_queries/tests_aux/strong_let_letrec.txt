@@ -1,0 +1,7 @@
+=== QUERY 4: TABLE ===
+opname		arg-number
+
+abs		1
+letrec		2
+letrec		1
+let		1

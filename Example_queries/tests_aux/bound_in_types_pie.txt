@@ -1,0 +1,6 @@
+=== QUERY 5: TABLE ===
+opname		category-info
+
+pie		Expression
+mu		Type
+all		Type

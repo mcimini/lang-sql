@@ -1,0 +1,6 @@
+=== QUERY 6: TABLE ===
+relation		arg
+
+step		Heap
+step		Heap
+

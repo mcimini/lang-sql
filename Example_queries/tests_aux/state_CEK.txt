@@ -1,0 +1,5 @@
+=== QUERY 6: TABLE ===
+relation		arg
+
+step		Environment
+step		Continuation

@@ -1,0 +1,15 @@
+=== QUERY 2: TABLE ===
+val		type
+
+fold		mu
+absT		all
+cons		list
+emptyList		list
+inr		sum
+inl		sum
+ff		bool
+tt		bool
+succ		int
+pair		times
+zero		int
+abs		arrow

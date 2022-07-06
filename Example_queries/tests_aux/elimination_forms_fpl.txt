@@ -1,0 +1,18 @@
+=== QUERY 3: TABLE ===
+opname
+
+app
+pred
+pred
+if
+if
+fst
+snd
+case
+case
+head
+head
+tail
+tail
+appT
+unfold
