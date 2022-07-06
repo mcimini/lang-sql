@@ -22,6 +22,7 @@ range, list length, reverse, and the recursor of natural numbers.
 <li> strong_stlc_cbv.lan, strong_stlc_cbv_let.lan, strong_stlc_cbv_let_and_letrec.lan, strong_stlc_cbv_letrecWithType.lan: Strong versions STLC where abstraction, let, and letrec can reduce underneath binders. 
 <li> fpl_cbv_with_grammar_of_dependent_types.lan: Adds the grammar of dependent types to fpl.lan. (Only grammar because our queries do not test other parts.) 
 <li> stlc_ref_only_grammar.lan: simply-typed lambda-calculus with references. (Only grammar because our queries do not test other parts.) 
+<li> stlc_CK.lan, stlc_CEK.lan: CK, and CEK machine. (Only grammar because our queries do not test other parts.) 
 </ul>
 <br />
 
