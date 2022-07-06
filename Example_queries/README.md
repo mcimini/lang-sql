@@ -58,7 +58,7 @@ Lines 21-27 of "queries.lsql"
 Query 5: What categories can be bound in types? <br />
 Lines 30-33 of "queries.lsql"
 <ul>
-<li> Returns <b>mu</b> with <b>Type</b>, <b>all with <b>Type and <b>pie with <b>Expression where these types are defined. 
+<li> Returns <b>mu</b> with <b>Type</b>, <b>all with <b>Type</b> and <b>pie with <b>Expression</b> where these types are defined. 
 	<br /> Example: see <a href = "tests_aux/bound_in_types_pie.txt"> output table for fpl_cbv_with_grammar_of_dependent_types.lan</a>.
 </ul>
 
