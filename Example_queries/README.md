@@ -30,28 +30,28 @@ range, list length, reverse, and the recursor of natural numbers.
 Query 1: How Many Typing Rules Does a Constructor Have? <br />
 Lines 2-4 of "queries.lsql"
 <ul>
-<li> Returns count = 1 for all languages in [1], [2], and [3]. Example: see <a href = "tests_aux/number_typing_rules_fpl.txt"> output table for fpl.lan.  
+<li> Returns count = 1 for all languages in [1], [2], and [3]. Example: see <a href = "tests_aux/number_typing_rules_fpl.txt"> output table for fpl.lan</a>.  
 <br />([4], [5], and [6] have only grammar so the test does not apply) 
 </ul>
 
 Query 2: [What are the Canonical Forms of the Language? <br />
 Lines 6-8 of "queries.lsql"
 <ul>
-<li> Returns correct canonical forms for [1], [2], and [3]. Example: see <a href = "tests_aux/canonical_fpl.txt"> output table for fpl.lan.  
+<li> Returns correct canonical forms for [1], [2], and [3]. Example: see <a href = "tests_aux/canonical_fpl.txt"> output table for fpl.lan</a>.
 <br />([4], [5], and [6] have only grammar so the test does not apply) 
 </ul>
 
 Query 3: [What are the Elimination Forms of the Language? <br />
 Lines 11-19 of "queries.lsql"
 <ul>
-<li> Returns correct elimination forms for [1], [2], and [3]. Example: see <a href = "tests_aux/elimination_forms_fpl.txt"> output table for fpl.lan.  
+<li> Returns correct elimination forms for [1], [2], and [3]. Example: see <a href = "tests_aux/elimination_forms_fpl.txt"> output table for fpl.lan</a>.  
 <br />([4], [5], and [6] have only grammar so the test does not apply) 
 </ul>
 
 Query 4: [What operators reduce underneath a binder? <br />
 Lines 21-27 of "queries.lsql"
 <ul>
-<li> Returns abs, let, letrec for [3]: Example: see <a href = "tests_aux/strong_let_letrec.txt"> output table for strong_stlc_cbv_let_and_letrec.tbl.
+<li> Returns abs, let, letrec for [3]: Example: see <a href = "tests_aux/strong_let_letrec.txt"> output table for strong_stlc_cbv_let_and_letrec.tbl</a>.
 <br />Returns an empty table for [1], [2], [4], [5], [6]. 
 </ul>
 
@@ -59,16 +59,16 @@ Query 5: [What categories can be bound in types? <br />
 Lines 30-33 of "queries.lsql"
 <ul>
 <li> Returns mu with Type, all with Type and pie with Expression where these types are defined. 
-	<br /> Example: see <a href = "tests_aux/bound_in_types_pie.txt"> output table for fpl_cbv_with_grammar_of_dependent_types.lan.
+	<br /> Example: see <a href = "tests_aux/bound_in_types_pie.txt"> output table for fpl_cbv_with_grammar_of_dependent_types.lan</a>.
 </ul>
 
 Query 6: [What is the state of the language? <br />
 Lines 36-38 of "queries.lsql"
 <ul>
-<li> Returns Heap in [5], see <a href = "tests_aux/state_references.txt"> output table for stlc_ref_only_grammar.lan. 
-	<br />Returns Continuation in CK of [6], see <a href = "state_CK.txt"> output table for stlc_CK.lan. 
-	<br />Returns Continuation and Environment in CEK of [6], see <a href = "state_CEK.txt"> output table for stlc_CEK.lan. 
-<br />Returns an empty table for [1], [2], [3], [4]. 
+<li> Returns Heap in [5], see <a href = "tests_aux/state_references.txt"> output table for stlc_ref_only_grammar.lan</a>.
+	<br />Returns Continuation in CK of [6], see <a href = "state_CK.txt"> output table for stlc_CK.lan</a>.
+	<br />Returns Continuation and Environment in CEK of [6], see <a href = "state_CEK.txt"> output table for stlc_CEK.lan</a>.
+<br />Returns an empty table for [1], [2], [3], [4].
 </ul>
 
 
