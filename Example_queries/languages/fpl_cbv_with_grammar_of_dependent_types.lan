@@ -1,5 +1,5 @@
 Expression E ::= x | (abs T (x)E) | (zero ) | (succ E) | (tt ) | (ff ) | (pair E E) | (inl E) | (inr E) | (emptyList ) | (cons E E) | (absT (X)E) | (fold E (X)T) | (app E E) | (pred E) | (if E E E) | (fst E) | (snd E) | (case E (x)E (x)E) | (head E) | (tail E) | (appT E T) | (unfold E) | (fix E) | (letrec T (x)E (x)E) | (try E E) | (raise E)
-Type T ::= (arrow T T) | (int ) | (bool ) | (times T T) | (sum T T) | (list T) | (all (X)T) | (mu (X)T) | (pie (x)T)
+Type T ::= (arrow T T) | (int ) | (bool ) | (times T T) | (sum T T) | (list T) | (all (X)T) | (mu (X)T) | (pie (x)E)
 Value V ::= (abs T1 R2) | (zero ) | (pair V1 V2) | (succ V1) | (tt ) | (ff ) | (inl V1) | (inr V1) | (emptyList ) | (cons V1 V2) | (absT R1) | (fold V1 U2)
 Error ::= (raise V1)
 Context C ::= [] | (succ C) | (inl C) | (inr C) | (pair C e) | (pair v C) | (cons C e) | (cons v C) | (fold C e) | (app C e) | (app v C) | (pred C) | (if C e e) | (fst C) | (snd C) | (case C e e) | (head C) | (tail C) | (appT C e) | (unfold C) | (fix C) | (try C e) | (raise C)

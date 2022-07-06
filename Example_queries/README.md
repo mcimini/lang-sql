@@ -5,25 +5,26 @@ Author: Matteo Cimini (matteo_cimini@uml.edu)
 # <a name="instructions"></a>Instructions 
 <br />
 
-Requirements: 
-<br />
-<ul>
-<li> To compile and run: Ocaml with the Batteries and Menhir packages is required.
-</ul>
-
 Quick usage: 
 <br />
 <ul>
-<li> make 
-<li> ./lnsql <folder-name>
+<li> ./lnsql Example_queries <br />
 </ul>
 
-To clean: <br />
+Languages are in the folder "languages": <br />
 <ul>
-<li> make clean 
-	<br /> (removes compilation files and executable) 
+<li> The simply-typed lambda-calculus (STLC), STLC with integers, booleans, pairs, lists,
+sums, tuples, fix, let, letrec, unit, universal types, recursive
+types, option types, exceptions, list operations such
+as append, map, mapi, filter, filteri,
+range, list length, reverse, and the recursor of natural numbers. 
+<li> fpl.lan: A functional language with multiple of the features above: STLC with integers, booleans, pairs, lists, universal types, recursive types, fix, letrec, and exceptions. 
+<li> strong_stlc_cbv.lan, strong_stlc_cbv_let.lan, strong_stlc_cbv_let_and_letrec.lan, strong_stlc_cbv_letrecWithType.lan: Strong versions STLC where abstraction, let, and letrec can reduce underneath binders. 
+<li> fpl_cbv_with_grammar_of_dependent_types.lan: Adds the grammar of dependent types to fpl.lan. (Only grammar because our queries do not test other parts.) 
+<li> stlc_ref_only_grammar.lan: simply-typed lambda-calculus with references. (Only grammar because our queries do not test other parts.) 
 </ul>
 <br />
+
 
 What it does:  <br />
 <ul>
