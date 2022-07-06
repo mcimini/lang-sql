@@ -24,6 +24,7 @@ Queries of "queries.lsql":  <br />
 <ul>
 <li> All our queries return an empty table for all the languages in the folder "languages". 
 	<br /> That is: <b>They all successfully pass our checks</b>. 
+	<br /> The script "testAll.sh" checks that all the tables in the folder "answers" are empty. 
 </ul>
 
 Negative tests for "queries.lsql":  <br />
