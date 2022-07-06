@@ -18,13 +18,6 @@ Quick usage:
 <li> ./lnsql [folder-name]
 </ul>
 
-To clean: <br />
-<ul>
-<li> make clean 
-	<br /> (removes compilation files and executable) 
-</ul>
-<br />
-
 What it does:  <br />
 <ul>
 <li> loads the file "queries.lnsql" in the folder [folder-name], which contains (possibly multiple) Lang-SQL queries. 
@@ -32,6 +25,14 @@ What it does:  <br />
 <li> for each .lan file, say, myfile.lan, all the queries of "queries.lnsql" are applied to the language,  <br />
 	and the output tables are written in myfile.tbl of the folder "answers" of [folder-name]. 
 </ul>
+
+To clean: <br />
+<ul>
+<li> make clean 
+	<br /> (removes compilation files and executable) 
+</ul>
+<br />
+
 
 Folders to test: 
 <br />
