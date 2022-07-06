@@ -23,8 +23,8 @@ What it does:  <br />
 <li> loads the file "queries.lnsql" in the folder [folder-name], which contains (possibly multiple) Lang-SQL queries. 
 <li> loads all the language definitions .lan in the folder "languages" of [folder-name]. 
 <li> for each .lan file, say, myfile.lan, 
-	<br /> > all the queries of "queries.lnsql" are applied to the language,  <br />
-	<br /> > the output tables are written in myfile.tbl of the folder "answers" of [folder-name]. 
+	<br /> - all the queries of "queries.lnsql" are applied to the language,  
+	<br /> - the output tables are written in myfile.tbl of the folder "answers" of [folder-name]. 
 </ul>
 
 To clean: <br />
@@ -38,10 +38,10 @@ To clean: <br />
 Folders to test: 
 <br />
 <ul>
-<li> ./lnsql Lang-n-Check <br />
-	see <a href="Lang-n-Check/"> this folder </a> for details on our experiments 
 <li> ./lnsql Example_queries <br />
-	see <a href="Example_queries/"> this folder </a> for details on our experiments 
+	see <a href="Example_queries/"> the "Example_queries" folder </a> for details on these experiments 
+<li> ./lnsql Lang-n-Check <br />
+	see <a href="Lang-n-Check/"> the "Lang-n-Check" folder </a> for details on these experiments 
 </ul> 
 
 
