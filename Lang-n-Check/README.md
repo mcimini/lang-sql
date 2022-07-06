@@ -2,45 +2,37 @@
 
 Author: Matteo Cimini (matteo_cimini@uml.edu)
 	<br />
-# <a name="instructions"></a>Instructions 
+# <a name="instructions"></a>Folder: Lang-n-Check
 <br />
-
-Requirements: 
-<br />
-<ul>
-<li> To compile and run: Ocaml with the Batteries and Menhir packages is required.
-</ul>
 
 Quick usage: 
 <br />
 <ul>
-<li> make 
-<li> ./lnsql <folder-name>
-</ul>
-
-To clean: <br />
-<ul>
-<li> make clean 
-	<br /> (removes compilation files and executable) 
-</ul>
-<br />
-
-What it does:  <br />
-<ul>
-<li> loads the file "queries.lnsql" in the folder <folder-name>, which contains (possibly multiple) Lang-SQL queries. 
-<li> loads all the language definitions .lan in the folder "languages" of <folder-name>. 
-<li> for each .lan file, say, myfile.lan, all the queries of "queries.lnsql" are applied to the language,  <br />
-	and the output tables are written in myfile.tbl of the folder "answers" of <folder-name>. 
-</ul>
-
-Folders to test: 
-<br />
-<ul>
 <li> ./lnsql Lang-n-Check <br />
-	see <a href="Lang-n-Check/"> this folder </a> for details on our experiments 
-<li> ./lnsql Example_queries <br />
-	see <a href="Example_queries/"> this folder </a> for details on our experiments 
-</ul> 
+</ul>
+
+Languages are in the folder "languages": <br />
+<ul>
+<li> These are the several functional languages of the Lang-n-Check repo. 
+	<br />See the  <a href = "https://github.com/mcimini/TypeSoundnessCertifier"> Lang-n-Check repo</a>. 
+	<br />The repo is also described in this <a href = "https://dl.acm.org/doi/10.1145/3426425.3426936">research paper</a>.  
+</ul>
+<br />
+
+
+Queries of "queries.lsql":  <br />
+Lines 2-4 of "queries.lsql"
+<ul>
+<li> All our queries return an empty table for all the languages in the folder "languages". 
+	<br /> That is: <b>They all successfully pass our checks</b>. 
+</ul>
+
+Negative tests for "queries.lsql":  <br />
+<ul>
+<li> Returns correct canonical forms for [1], [2], and [3]. Example: see <a href = "tests_aux/canonical_fpl.txt"> output table for fpl.lan</a>.
+<br />([4], [5], and [6] have only grammar so the test does not apply) 
+</ul>
+
 
 
 
