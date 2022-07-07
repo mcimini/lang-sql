@@ -20,8 +20,8 @@ Quick usage:
 
 What it does:  <br />
 <ul>
-<li> loads the file "queries.lnsql" in the folder [folder-name], which contains (possibly multiple) Lang-SQL queries. 
-<li> loads all the language definitions .lan in the folder "languages" of [folder-name]. 
+<li> loads the file "queries.lnsql" of the folder [folder-name], which contains (possibly multiple) Lang-SQL queries. 
+<li> loads all the language definitions .lan of the folder "languages" of [folder-name]. 
 <li> for each .lan file, say, myfile.lan, 
 	<br /> - all the queries of "queries.lnsql" are applied to the language,  
 	<br /> - the output tables are written in myfile.tbl of the folder "answers" of [folder-name]. 
