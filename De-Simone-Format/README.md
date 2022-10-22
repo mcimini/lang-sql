@@ -28,13 +28,11 @@ Languages are in the folder "languages": <br />
 	<li> process_algebra_rename.lan: : PA + CCS rename operator. 
 	<li> process_algebra_hourglass.lan: PA + so called 'hourglass' operator from the paper 
 	<br>
-	Aceto, L., Bloom, B., Vaandrager, F.: <i>Turning sos rules into equations. Information and Computation.</i> 1994.
+	Aceto, L., Bloom, B., Vaandrager, F.: <i>Turning sos rules into equations.</i> Information and Computation. 1994.
 	<li> process_algebra_leftMerge.lan: PA + left merge operator of ACP (Algrebra of Communicating Processes).  
 	<li> process_algebra_restriction.lan: : PA + CCS restriction operator. 
 </ul>
 <br />
-
-	<br />The repo is also described in this <a href = "https://dl.acm.org/doi/10.1145/3426425.3426936">research paper</a>.  
 
 
 Queries of "queries.lsql":  <br />
