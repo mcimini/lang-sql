@@ -5,8 +5,8 @@ SELECT * FROM declarationp WHERE relation = step AND NOT (rel-args = [Process ; 
 (SELECT rulename FROM rule)
 EXCEPT
 (  SELECT rulename FROM rule WHERE predname = step AND role = CONCL 
-							AND NTH(args,0) IS Process SKELETON 
-							AND NTH(args,1) IS CONSTRUCTED AND GET-ARGS(NTH(args,1)) = []  )
+		AND NTH(args,0) IS Process SKELETON 
+		AND NTH(args,1) IS CONSTRUCTED AND GET-ARGS(NTH(args,1)) = []  )
 
 
 
