@@ -1,0 +1,4 @@
+=== QUERY 2: TABLE ===
+rulename
+
+rule1
