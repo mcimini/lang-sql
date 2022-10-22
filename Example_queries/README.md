@@ -71,6 +71,13 @@ Lines 36-38 of "queries.lsql"
 <br />Returns an empty table for [1], [2], [3], [4].
 </ul>
 
+Query 7: Create Reduction Rules from Evaluation Contexts <br />
+Lines 41-70 of "queries.lsql"
+<ul>
+<li> Returns the correct contextual reduction rules for [1], [2], and [3]. Example: see <a href = "tests_aux/fpl_with_contextual_rules.txt"> output table for fpl_cbv.lan</a>.
+<br />([4], [5], and [6] have only grammar so the test does not apply) 
+</ul>
+
 
 
 

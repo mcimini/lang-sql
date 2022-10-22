@@ -42,6 +42,8 @@ Folders to test:
 	see <a href="Example_queries/"> the "Example_queries" folder </a> for details on these experiments 
 <li> ./lnsql Lang-n-Check <br />
 	see <a href="Lang-n-Check/"> the "Lang-n-Check" folder </a> for details on these experiments 
+<li> ./lnsql De-Simone-Format <br />
+	see <a href="De-Simone-Format/"> the "De-Simone-Format" folder </a> for details on these experiments 
 </ul> 
 
 

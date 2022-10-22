@@ -36,3 +36,36 @@ WHERE arg IS BOUND AND GET-BOUND-VAR(arg) = obj-var
 SELECT DISTINCT relation, arg 
 FROM (SELECT relation, rel-args AS ROWS arg FROM declarationp)
 WHERE relation = step AND NOT (arg = Expression)
+
+
+DEFINE CtxArgs = (SELECT POSITION() AS id, GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Context)
+
+DEFINE ValuePremises = 
+(SELECT
+	ADD-INDEX[RNAME](opname,id) AS rulename, 
+	value AS predname, [ADD-INDEX(E,arg-number)] AS args, 
+	PREM AS role
+ FROM CtxArgs
+ WHERE arg = v
+)
+
+DEFINE StepPremises = 
+(SELECT
+	ADD-INDEX[RNAME](opname,id) AS rulename,
+	step AS predname,
+	[ADD-INDEX(E,arg-number) ; ADD-PRIME(ADD-INDEX(E,arg-number))] AS args, 
+	PREM AS role
+ FROM CtxArgs
+ WHERE arg IS Context VAR)
+
+DEFINE Conclusions = 
+(SELECT
+	ADD-INDEX[RNAME](opname,id) AS rulename,
+	step AS predname,
+	[GET-SKELETON(opname, Expression) ; ADD-PRIME-AT(GET-SKELETON(opname, Expression),arg-number)] AS args,
+	CONCL AS role
+ FROM CtxArgs
+ WHERE arg IS Context VAR)
+
+rule UNION ValuePremises UNION StepPremises UNION Conclusions
+
