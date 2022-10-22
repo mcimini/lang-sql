@@ -51,48 +51,48 @@ Negative tests for "queries.lsql":  <br />
 	<br /> replace <b>Relation ::= (step Process Label Process)</b> with <b>Relation ::= (step Label Process Label Process)</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>step</b>, for not having the correct signature, see <a href = "tests_aux/negative_query1.txt">output table</a>. 
 
-<li> Query 2 (line 6): Source of a rule is not a skeleton. Here, one of the arguments is not a variable, it has a top-level operator.  (It is in <b>(a (a P))</b> below).
+<li> Query 2 (line 5): Source of a rule is not a skeleton. Here, one of the arguments is not a variable, it has a top-level operator.  (It is in <b>(a (a P))</b> below).
 	<br /> replace <b>(a P) --(a)--> P.</b> (first rule) with <b>(a (a P)) --(a)--> P.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule1</b> is not valid, see <a href = "tests_aux/negative_query2_a.txt">output table</a>. 
 
-<li> Query 2 (line 6): The label of the step of the conclusion is a process variable rather than a constant. (Label is <b>P</b> below). 
+<li> Query 2 (line 5): The label of the step of the conclusion is a process variable rather than a constant. (Label is <b>P</b> below). 
 	<br /> replace <b>(a P) --(a)--> P.</b> (first rule) with <b>(a P) -- P --> P.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule1</b> is not valid, see <a href = "tests_aux/negative_query2_b.txt">output table</a>. 
 
-<li> Query 3 (line 15): Replication operator <b>repl</b> does not adhere to de Simone's format. Indeed, the source of a premise is not a variable. (It is the premise with <b>(par (repl P))</b> as a source below). 
+<li> Query 3 (line 13): Replication operator <b>repl</b> does not adhere to de Simone's format. Indeed, the source of a premise is not a variable. (It is the premise with <b>(par (repl P))</b> as a source below). 
 	<br /> replace the grammar Process with <b>Process P ::= (null) | (a P) | (par P P) | (repl P).</b> in process_algebra_CCSparallel.lan. 
 	<br /> add rule <b>(repl P) --(a)--> P' <== (par (repl P)) --(a)--> P'.</b> at the end (rule 4). 
 	<br /> returns: <b>rule4</b> is not valid, see <a href = "tests_aux/negative_query3_a.txt">output table</a>. 
 
-<li> Query 3 (line 15): The source of a premise is not a variable. (Another example.) (It is the premise with <b>(a P)</b> as a source below). 
+<li> Query 3 (line 13): The source of a premise is not a variable. (Another example.) (It is the premise with <b>(a P)</b> as a source below). 
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== (a P) --(a)--> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule2</b> is not valid, see <a href = "tests_aux/negative_query3_b.txt">output table</a>. 
 
-<li> Query 3 (line 15): The label of a premise step is a process variable. (<b>P1</b> is used as a label below).
+<li> Query 3 (line 13): The label of a premise step is a process variable. (<b>P1</b> is used as a label below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 -- P1 --> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule2</b> is not valid, see <a href = "tests_aux/negative_query3_c.txt">output table</a>. 
 
-<li> Query 3 (line 15): The target of a premise step is not a process variable. (<b>(a P)</b> is the target of a premise below).
+<li> Query 3 (line 13): The target of a premise step is not a process variable. (<b>(a P)</b> is the target of a premise below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 -- P1 -->(a P).</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule2</b> is not valid, see <a href = "tests_aux/negative_query3_d.txt">output table</a>. 
 
-<li> Query 4 (line 30): The source of a premise is not a variable from the conclusion. (That is the variable <b>P1'</b> in the source of a premise below).
+<li> Query 4 (line 24): The source of a premise is not a variable from the conclusion. (That is the variable <b>P1'</b> in the source of a premise below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1' --(a)--> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>P1' in rule2</b>, see <a href = "tests_aux/negative_query4.txt">output table</a>. 
 
-<li> Query 5 (line 43): Some variable of the source of the conclusion is also used as the target of a step premise. (That is the variable <b>P2</b> below).
+<li> Query 5 (line 30): Some variable of the source of the conclusion is also used as the target of a step premise. (That is the variable <b>P2</b> below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P2.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>P2 in rule2</b>, see <a href = "tests_aux/negative_query5.txt">output table</a>. 
 
-<li> Query 6 (line 50): The target of the conclusion contains a variable out of nowhere. (That is the variable <b>P3</b> below).
+<li> Query 6 (line 35): The target of the conclusion contains a variable out of nowhere. (That is the variable <b>P3</b> below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P3) <== P1 --(a)--> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>P3 in rule2</b>, see <a href = "tests_aux/negative_query6_a.txt">output table</a>. 
 
-<li> Query 6 (line 50): Some variable in the target of the conclusion is used as source of a premise. (That is the variable <b>P1</b> below, it took a step in a premise and cannot be used in the target of the conclusion then).
+<li> Query 6 (line 35): Some variable in the target of the conclusion is used as source of a premise. (That is the variable <b>P1</b> below, it took a step in a premise and cannot be used in the target of the conclusion then).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P1) <== P1 --(a)--> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>P1 in rule2</b>, see <a href = "tests_aux/negative_query6_b.txt">output table</a>. 
 
-<li> Query 7 (line 62): A variable is used more than once in the target of the conclusion. (The variable <b>P1'</b> is used twice in the target of the conclusion below).
+<li> Query 7 (line 41): A variable is used more than once in the target of the conclusion. (The variable <b>P1'</b> is used twice in the target of the conclusion below).
 	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P1') <== P1 --(a)--> P1'.</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>P1' in rule2</b>, see <a href = "tests_aux/negative_query7.txt">output table</a>. 
 </ul>
