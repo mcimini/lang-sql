@@ -1,0 +1,12 @@
+Label L ::= (a) | (b)
+Process P ::= (null) | (a P) | (b P) | (signalA P)  
+Relation ::= (step Process Label Process)
+
+(a P) --(a)--> P.
+(b P) --(b)--> P.
+(signalA P)  --(a)--> (signalA P). 
+(signalB P)  --(b)--> (signalB P). 
+(signalA P) --(a)--> (signalA P') <== P --(a)--> P'.
+(signalA P) --(b)--> (signalA P') <== P --(b)--> P'.
+(signalB P) --(a)--> (signalB P') <== P --(a)--> P'.
+(signalB P) --(b)--> (signalB P') <== P --(b)--> P'.

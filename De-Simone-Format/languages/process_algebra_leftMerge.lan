@@ -1,0 +1,8 @@
+Label L ::= (a) 
+Process P ::= (null) | (a P) | (par P P)  | (leftMerge P P) 
+Relation ::= (step Process Label Process)
+
+(a P) --(a)--> P.
+(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.
+(par P1 P2) --(a)--> (par P1 P2') <== P2 --(a)--> P2'.
+(leftMerge P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'. 

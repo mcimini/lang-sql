@@ -1,0 +1,9 @@
+Label L ::= (a) 
+Process P ::= (null) | (inA P) | (outA P) | (par P P) 
+Relation ::= (step Process Label Process)
+
+(a P) --(a)--> P.
+(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.
+(par P1 P2) --(a)--> (par P1 P2') <== P2 --(a)--> P2'.
+
+(par P1 P2) --(a)--> (par P1' P2') <== P1 --(a)--> P1' /\ P2 --(a)--> P2'.

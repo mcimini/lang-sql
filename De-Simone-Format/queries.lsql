@@ -1,0 +1,62 @@
+SELECT * FROM declarationp
+WHERE relation = step AND NOT (rel-args = [Process ; Label ; Process])
+
+
+
+(SELECT rulename FROM rule)
+EXCEPT
+(SELECT rulename FROM rule WHERE predname = step AND role = CONCL
+    AND NTH(args,0) IS Process SKELETON
+    AND NTH(args,1) IS CONSTRUCTED AND GET-ARGS(NTH(args,1)) = []
+)
+
+
+
+(SELECT rulename FROM rule)
+EXCEPT
+(
+	(
+	SELECT DISTINCT rulename FROM rule WHERE predname = step AND role = PREM
+	AND NTH(args,0) IS Process VAR
+	AND NTH(args,1) IS CONSTRUCTED AND GET-ARGS(NTH(args,1)) = [] 
+	AND NTH(args,2) IS Process VAR
+	)
+	UNION
+	(SELECT rulename FROM rule GROUP BY rulename HAVING ALL NOT (role = PREM))
+)
+
+
+
+DEFINE Xs = (
+			SELECT rulename, var
+			FROM
+			(SELECT rulename, GET-VARS(NTH(args,0)) AS ROWS var FROM rule WHERE role = CONCL)
+		)
+
+DEFINE XsInPremises = (SELECT rulename, NTH(args,0) AS var FROM rule WHERE role = PREM)
+
+XsInPremises EXCEPT Xs
+
+
+
+
+DEFINE Ys = (SELECT rulename, NTH(args,2) AS var FROM rule WHERE role = PREM)
+
+(Xs EXCEPT (Xs EXCEPT Ys))
+
+
+
+
+DEFINE XsNotInPremises = Xs EXCEPT XsInPremises 
+
+DEFINE VarsInTarget = 	(
+	SELECT rulename, var
+	FROM SELECT rulename, GET-VARS(NTH(args,2)) AS ROWS var FROM rule WHERE role = CONCL
+	)
+
+(VarsInTarget EXCEPT XsNotInPremises) EXCEPT Ys 
+
+
+
+
+SELECT rulename, var FROM VarsInTarget GROUP BY rulename, var HAVING COUNT() > 1
