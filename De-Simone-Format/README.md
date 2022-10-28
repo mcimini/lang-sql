@@ -73,7 +73,7 @@ Negative tests for "queries.lsql":  <br />
 	<br /> returns: <b>rule2</b> is not valid, see <a href = "tests_aux/negative_query3_c.txt">output table</a>. 
 
 <li> Query 3 (line 13): The target of a premise step is not a process variable. (<b>(a P)</b> is the target of a premise below).
-	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)-->(a P).</b> in process_algebra_CCSparallel.lan 
+	<br /> replace <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> P1'.</b> (rule 2) with <b>(par P1 P2) --(a)--> (par P1' P2) <== P1 --(a)--> (a P).</b> in process_algebra_CCSparallel.lan 
 	<br /> returns: <b>rule2</b> is not valid, see <a href = "tests_aux/negative_query3_d.txt">output table</a>. 
 
 <li> Query 4 (line 24): The source of a premise is not a variable from the conclusion. (That is the variable <b>P1'</b> in the source of a premise below).
