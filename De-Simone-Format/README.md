@@ -60,7 +60,7 @@ Negative tests for "queries.lsql":  <br />
 	<br /> returns: <b>rule1</b> is not valid, see <a href = "tests_aux/negative_query2_b.txt">output table</a>. 
 
 <li> Query 3 (line 13): Replication operator <b>repl</b> does not adhere to de Simone's format. Indeed, the source of a premise is not a variable. (It is the premise with <b>(par (repl P))</b> as a source below). 
-	<br /> replace the grammar Process with <b>Process P ::= (null) | (a P) | (par P P) | (repl P).</b> in process_algebra_CCSparallel.lan. 
+	<br /> replace the grammar Process with <b>Process P ::= (null) | (a P) | (par P P) | (repl P)</b> in process_algebra_CCSparallel.lan. 
 	<br /> add rule <b>(repl P) --(a)--> P' <== (par (repl P)) --(a)--> P'.</b> at the end (rule 4). 
 	<br /> returns: <b>rule4</b> is not valid, see <a href = "tests_aux/negative_query3_a.txt">output table</a>. 
 
