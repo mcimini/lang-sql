@@ -1,4 +1,4 @@
-SELECT * FROM declarationp WHERE relation = step AND NOT (rel-args = [Process ; Label ; Process])
+SELECT * FROM declarationp WHERE (relation = step AND NOT (rel-args = [Process ; Label ; Process])) OR (NOT (relation = step))
 
 
 
@@ -28,7 +28,7 @@ XsInPremises EXCEPT Xs
 
 
 DEFINE Ys = (SELECT rulename, NTH(args,2) AS var FROM rule WHERE role = PREM)
-(Xs EXCEPT (Xs EXCEPT Ys))
+SELECT rulename, var FROM (Xs UNION Ys) GROUP BY rulename, var HAVING COUNT() > 1
 
 
 
