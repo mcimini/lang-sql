@@ -13,7 +13,7 @@ Quick usage:
 
 Languages are in the folder "languages": <br />
 <ul>
-<li> [1] The simply-typed lambda-calculus (STLC), STLC with integers, booleans, pairs, lists, sums, 
+<li> [1] The simply-typed lambda-calculus (STLC), and starting from STLC the repo contains a language definition for each of the following types/operators added to STLC: integers, booleans, pairs, lists, sums, 
 sums, tuples, fix, let, letrec, unit, universal types, recursive
 types, option types, exceptions, list operations such
 as append, map, mapi, filter, filteri,
