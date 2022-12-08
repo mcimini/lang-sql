@@ -15,9 +15,9 @@ Languages are in the folder "languages": <br />
 <ul>
 <li> [1] The simply-typed lambda-calculus (STLC), and starting from STLC the repo contains a language definition for each of the following types/operators added to STLC: integers, booleans, pairs, lists, 
 sums, tuples, fix, let, letrec, unit, universal types, recursive
-types, option types, exceptions, list operations such
+types, option types, exceptions, the recursor of natural numbers, list operations such
 as append, map, mapi, filter, filteri,
-range, list length, reverse, and the recursor of natural numbers. 
+range, list length, and reverse.  
 <li> [2] fpl_cbv.lan: A functional language with multiple of the features above: STLC with integers, booleans, pairs, lists, universal types, recursive types, fix, letrec, and exceptions. 
 <li> [3] strong_stlc_cbv.lan, strong_stlc_cbv_let.lan, strong_stlc_cbv_let_and_letrec.lan, strong_stlc_cbv_letrecWithType.lan, strong_stlc_cbv_let_and_letrec.tbl: Variants of STLC where abstraction, let, and letrec can reduce underneath binders. 
 <li> [4] fpl_cbv_with_grammar_of_dependent_types.lan: Adds the grammar of dependent types to fpl_cbv.lan. (Only the grammar because our queries do not test other parts.) 
