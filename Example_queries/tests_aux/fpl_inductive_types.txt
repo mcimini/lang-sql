@@ -1,0 +1,12 @@
+=== QUERY 8: TABLE ===
+opname
+
+mu
+all
+list
+sum
+sum
+times
+times
+arrow
+arrow

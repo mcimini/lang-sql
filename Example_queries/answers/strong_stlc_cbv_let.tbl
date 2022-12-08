@@ -35,3 +35,41 @@ let		1
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule5		value		[V]		PREM
+rule5		step		[(let V R) ; R[V/x]]		CONCL
+rule4		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule4		typeOf		[Gamma ; E ; T1]		PREM
+rule4		typeOf		[Gamma ; (let E R) ; T2]		CONCL
+rule3		value		[V]		PREM
+rule3		step		[(app (abs T R) V) ; R[V/x]]		CONCL
+rule2		typeOf		[Gamma ; E2 ; T1]		PREM
+rule2		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule2		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule1		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule1		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+let1		value		[E0]		PREM
+app3		value		[E0]		PREM
+let2		step		[E0 ; E0']		PREM
+app3		step		[E1 ; E1']		PREM
+app4		step		[E0 ; E0']		PREM
+let2		step		[(let E0 (x)E1) ; (let E0' (x)E1)]		CONCL
+app3		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app4		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+arrow
+arrow
+
+
+
+=== QUERY 9: EMPTY TABLE ===
+

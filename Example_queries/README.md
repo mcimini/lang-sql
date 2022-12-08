@@ -13,7 +13,7 @@ Quick usage:
 
 Languages are in the folder "languages": <br />
 <ul>
-<li> [1] The simply-typed lambda-calculus (STLC), STLC with integers, booleans, pairs, lists,
+<li> [1] The simply-typed lambda-calculus (STLC), STLC with integers, booleans, pairs, lists, sums, 
 sums, tuples, fix, let, letrec, unit, universal types, recursive
 types, option types, exceptions, list operations such
 as append, map, mapi, filter, filteri,
@@ -78,10 +78,17 @@ Lines 41-70 of "queries.lsql"
 <br />([4], [5], and [6] have only grammar so the test does not apply) 
 </ul>
 
+Query 8: What Are the Inductive Types? <br />
+Lines 73-75 of "queries.lsql"
+<ul>
+<li> Returns the correct inductive types for [1], [2], [3], [4], [5], [6]. 
+	<br /> Example: Returns <b>arrow</b>, <b>times</b>, <b>list</b>, <b>sum</b>, <b>all</b>, and <b>mu</b> for fpl_cbv.lan. See <a href = "tests_aux/fpl_inductive_types.txt"> output table for fpl_cbv.lan</a>.
+</ul>
 
-
-
-
-
+Query 9: Can Errors Be Typed at Any Type? (Check: Fresh Variable as Output of Their Typing Rule) <br />
+Lines 78-88 of "queries.lsql"
+<ul>
+<li> Returns the correct output, i.e., error constructor and the output of its typing rule, if it is a fresh variable, for [1], [2], [3], [4], [5], [6]. Example: see <a href = "tests_aux/fpl_errors_and_output_types.txt"> output table for fpl_cbv.lan</a>. 
+</ul>
 
 

@@ -37,3 +37,44 @@ mu		Type
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule6		value		[V]		PREM
+rule6		step		[(unfold (fold V R)) ; V]		CONCL
+rule5		typeOf		[Gamma ; E ; (mu R)]		PREM
+rule5		typeOf		[Gamma ; (unfold E) ; R[(mu R)/x]]		CONCL
+rule4		value		[E]		PREM
+rule4		step		[(app (abs T R) E) ; R[E/x]]		CONCL
+rule3		typeOf		[Gamma ; E2 ; T1]		PREM
+rule3		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule3		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule2		typeOf		[Gamma ; E ; R[(mu R)/x]]		PREM
+rule2		typeOf		[Gamma ; (fold E R) ; (mu R)]		CONCL
+rule1		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule1		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+app2		value		[E0]		PREM
+unfold0		step		[E0 ; E0']		PREM
+fold1		step		[E0 ; E0']		PREM
+app2		step		[E1 ; E1']		PREM
+app3		step		[E0 ; E0']		PREM
+unfold0		step		[(unfold E0) ; (unfold E0')]		CONCL
+fold1		step		[(fold E0 (X)T1) ; (fold E0' (X)T1)]		CONCL
+app2		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app3		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+mu
+arrow
+arrow
+
+
+
+=== QUERY 9: EMPTY TABLE ===
+

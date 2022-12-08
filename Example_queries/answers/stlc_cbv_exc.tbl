@@ -34,3 +34,49 @@ app
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule8		typeOf		[Gamma ; E ; (excType)]		PREM
+rule8		typeOf		[Gamma ; (raise E) ; T]		CONCL
+rule7		step		[(try (raise E1) E2) ; (app E2 E1)]		CONCL
+rule6		value		[V1]		PREM
+rule6		step		[(try V1 E2) ; E1]		CONCL
+rule5		typeOf		[Gamma ; E2 ; (arrow (excType) T)]		PREM
+rule5		typeOf		[Gamma ; E1 ; T]		PREM
+rule5		typeOf		[Gamma ; (try E1 E2) ; T]		CONCL
+rule4		value		[V]		PREM
+rule4		step		[(app (abs T R) V) ; R[V/x]]		CONCL
+rule3		typeOf		[Gamma ; E2 ; T1]		PREM
+rule3		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule3		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule2		typeOf		[Gamma ; (excValue) ; (excType)]		CONCL
+rule1		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule1		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+app2		value		[E0]		PREM
+raise0		step		[E0 ; E0']		PREM
+try1		step		[E0 ; E0']		PREM
+app2		step		[E1 ; E1']		PREM
+app3		step		[E0 ; E0']		PREM
+raise0		step		[(raise E0) ; (raise E0')]		CONCL
+try1		step		[(try E0 E1) ; (try E0' E1)]		CONCL
+app2		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app3		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+arrow
+arrow
+
+
+
+=== QUERY 9: TABLE ===
+err		r		var		var-number
+
+raise		rule8		T		0
+

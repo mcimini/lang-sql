@@ -1,0 +1,5 @@
+=== QUERY 9: TABLE ===
+err		r		var		var-number
+
+raise		rule45		T		0
+

@@ -38,3 +38,50 @@ letrec		1
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule9		step		[(letrec T R1 R2) ; (let (fix (abs T R1)) R2)]		CONCL
+rule8		typeOf		[(gammaAddx T1) ; R2 ; T2]		PREM
+rule8		typeOf		[(gammaAddx T1) ; R1 ; T1]		PREM
+rule8		typeOf		[Gamma ; (letrec T1 R1 R2) ; T2]		CONCL
+rule7		value		[V]		PREM
+rule7		step		[(let V R) ; R[V/x]]		CONCL
+rule6		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule6		typeOf		[Gamma ; E ; T1]		PREM
+rule6		typeOf		[Gamma ; (let E R) ; T2]		CONCL
+rule5		value		[V]		PREM
+rule5		step		[(fix V) ; (app V (fix V))]		CONCL
+rule4		typeOf		[Gamma ; E ; (arrow T T)]		PREM
+rule4		typeOf		[Gamma ; (fix E) ; T]		CONCL
+rule3		value		[V]		PREM
+rule3		step		[(app (abs T R) V) ; R[V/x]]		CONCL
+rule2		typeOf		[Gamma ; E2 ; T1]		PREM
+rule2		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule2		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule1		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule1		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+app5		value		[E0]		PREM
+let3		step		[E0 ; E0']		PREM
+fix4		step		[E0 ; E0']		PREM
+app5		step		[E1 ; E1']		PREM
+app6		step		[E0 ; E0']		PREM
+let3		step		[(let E0 (x)E1) ; (let E0' (x)E1)]		CONCL
+fix4		step		[(fix E0) ; (fix E0')]		CONCL
+app5		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app6		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+arrow
+arrow
+
+
+
+=== QUERY 9: EMPTY TABLE ===
+

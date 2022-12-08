@@ -84,3 +84,160 @@ all		Type
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule45		typeOf		[Gamma ; E1 ; (int)]		PREM
+rule45		typeOf		[Gamma ; (raise E1) ; T]		CONCL
+rule44		step		[(try (raise E1) E2) ; (app E2 E1)]		CONCL
+rule43		value		[V1]		PREM
+rule43		step		[(try V1 E2) ; E1]		CONCL
+rule42		typeOf		[Gamma ; E2 ; (arrow (int) T)]		PREM
+rule42		typeOf		[Gamma ; E1 ; T]		PREM
+rule42		typeOf		[Gamma ; (try E1 E2) ; T]		CONCL
+rule41		step		[(letrec T1 R1 R2) ; R2[(fix (abs T1 R1))/x]]		CONCL
+rule40		typeOf		[(gammaAddx T1) ; R2 ; T2]		PREM
+rule40		typeOf		[(gammaAddx T1) ; R1 ; T1]		PREM
+rule40		typeOf		[Gamma ; (letrec T1 R1 R2) ; T2]		CONCL
+rule39		value		[E]		PREM
+rule39		step		[(fix E) ; (app E (fix E))]		CONCL
+rule38		typeOf		[Gamma ; E ; (arrow T T)]		PREM
+rule38		typeOf		[Gamma ; (fix E) ; T]		CONCL
+rule37		value		[E]		PREM
+rule37		step		[(unfold (fold E R)) ; E]		CONCL
+rule36		typeOf		[Gamma ; E ; (mu R)]		PREM
+rule36		typeOf		[Gamma ; (unfold E) ; R[(mu R)/x]]		CONCL
+rule35		step		[(appT (absT R2) X) ; R2[X/x]]		CONCL
+rule34		typeOf		[Gamma ; E ; (all R)]		PREM
+rule34		typeOf		[Gamma ; (appT E X) ; R[X/x]]		CONCL
+rule33		step		[(tail (cons E1 E2)) ; E2]		CONCL
+rule32		step		[(tail (emptyList)) ; (raise (succ (zero)))]		CONCL
+rule31		typeOf		[Gamma ; E ; (list T)]		PREM
+rule31		typeOf		[Gamma ; (tail E) ; (list T)]		CONCL
+rule30		step		[(head (cons E1 E2)) ; E1]		CONCL
+rule29		step		[(head (emptyList)) ; (raise (zero))]		CONCL
+rule28		typeOf		[Gamma ; E ; (list T)]		PREM
+rule28		typeOf		[Gamma ; (head E) ; T]		CONCL
+rule27		value		[E]		PREM
+rule27		step		[(case (inr E) R1 R2) ; R2[E/x]]		CONCL
+rule26		value		[E]		PREM
+rule26		step		[(case (inl E) R1 R2) ; R1[E/x]]		CONCL
+rule25		typeOf		[(gammaAddx T2) ; R2 ; T]		PREM
+rule25		typeOf		[(gammaAddx T1) ; R1 ; T]		PREM
+rule25		typeOf		[Gamma ; EE ; (sum T1 T2)]		PREM
+rule25		typeOf		[Gamma ; (case EE R1 R2) ; T]		CONCL
+rule24		step		[(snd (pair V1 V2)) ; V2]		CONCL
+rule23		step		[(fst (pair V1 V2)) ; V1]		CONCL
+rule22		typeOf		[Gamma ; E ; (times T1 T2)]		PREM
+rule22		typeOf		[Gamma ; (snd E) ; T2]		CONCL
+rule21		typeOf		[Gamma ; E ; (times T1 T2)]		PREM
+rule21		typeOf		[Gamma ; (fst E) ; T1]		CONCL
+rule20		step		[(if (ff) E1 E2) ; E2]		CONCL
+rule19		step		[(if (tt) E1 E2) ; E1]		CONCL
+rule18		typeOf		[Gamma ; E3 ; T]		PREM
+rule18		typeOf		[Gamma ; E2 ; T]		PREM
+rule18		typeOf		[Gamma ; E1 ; (bool)]		PREM
+rule18		typeOf		[Gamma ; (if E1 E2 E3) ; T]		CONCL
+rule17		step		[(pred (succ E)) ; E]		CONCL
+rule16		step		[(pred (zero)) ; (raise (zero))]		CONCL
+rule15		typeOf		[Gamma ; E ; (int)]		PREM
+rule15		typeOf		[Gamma ; (pred E) ; (int)]		CONCL
+rule14		value		[V]		PREM
+rule14		step		[(app (abs T R) V) ; R[V/x]]		CONCL
+rule13		typeOf		[Gamma ; E2 ; T1]		PREM
+rule13		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule13		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule12		typeOf		[Gamma ; E ; R[(mu R)/x]]		PREM
+rule12		typeOf		[Gamma ; (fold E R) ; (mu R)]		CONCL
+rule11		typeOf		[(gammaAddX) ; R2 ; R]		PREM
+rule11		typeOf		[Gamma ; (absT R2) ; (all R)]		CONCL
+rule10		typeOf		[Gamma ; E2 ; (list T)]		PREM
+rule10		typeOf		[Gamma ; E1 ; T]		PREM
+rule10		typeOf		[Gamma ; (cons E1 E2) ; (list T)]		CONCL
+rule9		typeOf		[Gamma ; (emptyList) ; (list T)]		CONCL
+rule8		typeOf		[Gamma ; E ; T2]		PREM
+rule8		typeOf		[Gamma ; (inr E) ; (sum T1 T2)]		CONCL
+rule7		typeOf		[Gamma ; E ; T1]		PREM
+rule7		typeOf		[Gamma ; (inl E) ; (sum T1 T2)]		CONCL
+rule6		typeOf		[Gamma ; E2 ; T2]		PREM
+rule6		typeOf		[Gamma ; E1 ; T1]		PREM
+rule6		typeOf		[Gamma ; (pair E1 E2) ; (times T1 T2)]		CONCL
+rule5		typeOf		[Gamma ; (ff) ; (bool)]		CONCL
+rule4		typeOf		[Gamma ; (tt) ; (bool)]		CONCL
+rule3		typeOf		[Gamma ; E ; (int)]		PREM
+rule3		typeOf		[Gamma ; (succ E) ; (int)]		CONCL
+rule2		typeOf		[Gamma ; (zero) ; (int)]		CONCL
+rule1		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule1		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+app12		value		[E0]		PREM
+cons15		value		[E0]		PREM
+pair17		value		[E0]		PREM
+raise0		step		[E0 ; E0']		PREM
+try1		step		[E0 ; E0']		PREM
+fix2		step		[E0 ; E0']		PREM
+unfold3		step		[E0 ; E0']		PREM
+appT4		step		[E0 ; E0']		PREM
+tail5		step		[E0 ; E0']		PREM
+head6		step		[E0 ; E0']		PREM
+case7		step		[E0 ; E0']		PREM
+snd8		step		[E0 ; E0']		PREM
+fst9		step		[E0 ; E0']		PREM
+if10		step		[E0 ; E0']		PREM
+pred11		step		[E0 ; E0']		PREM
+app12		step		[E1 ; E1']		PREM
+app13		step		[E0 ; E0']		PREM
+fold14		step		[E0 ; E0']		PREM
+cons15		step		[E1 ; E1']		PREM
+cons16		step		[E0 ; E0']		PREM
+pair17		step		[E1 ; E1']		PREM
+pair18		step		[E0 ; E0']		PREM
+inr19		step		[E0 ; E0']		PREM
+inl20		step		[E0 ; E0']		PREM
+succ21		step		[E0 ; E0']		PREM
+raise0		step		[(raise E0) ; (raise E0')]		CONCL
+try1		step		[(try E0 E1) ; (try E0' E1)]		CONCL
+fix2		step		[(fix E0) ; (fix E0')]		CONCL
+unfold3		step		[(unfold E0) ; (unfold E0')]		CONCL
+appT4		step		[(appT E0 T1) ; (appT E0' T1)]		CONCL
+tail5		step		[(tail E0) ; (tail E0')]		CONCL
+head6		step		[(head E0) ; (head E0')]		CONCL
+case7		step		[(case E0 (x)E1 (x)E2) ; (case E0' (x)E1 (x)E2)]		CONCL
+snd8		step		[(snd E0) ; (snd E0')]		CONCL
+fst9		step		[(fst E0) ; (fst E0')]		CONCL
+if10		step		[(if E0 E1 E2) ; (if E0' E1 E2)]		CONCL
+pred11		step		[(pred E0) ; (pred E0')]		CONCL
+app12		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app13		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+fold14		step		[(fold E0 (X)T1) ; (fold E0' (X)T1)]		CONCL
+cons15		step		[(cons E0 E1) ; (cons E0 E1')]		CONCL
+cons16		step		[(cons E0 E1) ; (cons E0' E1)]		CONCL
+pair17		step		[(pair E0 E1) ; (pair E0 E1')]		CONCL
+pair18		step		[(pair E0 E1) ; (pair E0' E1)]		CONCL
+inr19		step		[(inr E0) ; (inr E0')]		CONCL
+inl20		step		[(inl E0) ; (inl E0')]		CONCL
+succ21		step		[(succ E0) ; (succ E0')]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+mu
+all
+list
+sum
+sum
+times
+times
+arrow
+arrow
+
+
+
+=== QUERY 9: TABLE ===
+err		r		var		var-number
+
+raise		rule45		T		0
+

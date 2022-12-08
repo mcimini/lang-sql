@@ -64,3 +64,113 @@ tail
 
 === QUERY 6: EMPTY TABLE ===
 
+
+
+=== QUERY 7: TABLE ===
+rulename		predname		args		role
+
+rule34		typeOf		[Gamma ; (myerror) ; T]		CONCL
+rule33		step		[(letrec T1 R1 R2) ; R2[(fix (abs T1 R1))/x]]		CONCL
+rule32		typeOf		[(gammaAddx T1) ; R2 ; T2]		PREM
+rule32		typeOf		[(gammaAddx T1) ; R1 ; T1]		PREM
+rule32		typeOf		[Gamma ; (letrec T1 R1 R2) ; T2]		CONCL
+rule31		value		[E]		PREM
+rule31		step		[(fix E) ; (app E (fix E))]		CONCL
+rule30		typeOf		[Gamma ; E ; (arrow T T)]		PREM
+rule30		typeOf		[Gamma ; (fix E) ; T]		CONCL
+rule29		step		[(tail (cons E1 E2)) ; E2]		CONCL
+rule28		step		[(tail (emptyList)) ; (myerror)]		CONCL
+rule27		typeOf		[Gamma ; E ; (list T)]		PREM
+rule27		typeOf		[Gamma ; (tail E) ; (list T)]		CONCL
+rule26		step		[(head (cons E1 E2)) ; E1]		CONCL
+rule25		step		[(head (emptyList)) ; (myerror)]		CONCL
+rule24		typeOf		[Gamma ; E ; (list T)]		PREM
+rule24		typeOf		[Gamma ; (head E) ; T]		CONCL
+rule23		step		[(if (ff) E1 E2) ; E2]		CONCL
+rule22		step		[(if (tt) E1 E2) ; E1]		CONCL
+rule21		typeOf		[Gamma ; E3 ; T]		PREM
+rule21		typeOf		[Gamma ; E2 ; T]		PREM
+rule21		typeOf		[Gamma ; E1 ; (bool)]		PREM
+rule21		typeOf		[Gamma ; (if E1 E2 E3) ; T]		CONCL
+rule20		step		[(isZero (succ E)) ; (ff)]		CONCL
+rule19		step		[(isZero (zero)) ; (tt)]		CONCL
+rule18		typeOf		[Gamma ; E ; (int)]		PREM
+rule18		typeOf		[Gamma ; (isZero E) ; (bool)]		CONCL
+rule17		step		[(pred (succ E)) ; E]		CONCL
+rule16		step		[(pred (zero)) ; (myerror)]		CONCL
+rule15		typeOf		[Gamma ; E ; (int)]		PREM
+rule15		typeOf		[Gamma ; (pred E) ; (int)]		CONCL
+rule14		value		[V]		PREM
+rule14		step		[(let V R) ; R[V/x]]		CONCL
+rule13		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule13		typeOf		[Gamma ; E ; T1]		PREM
+rule13		typeOf		[Gamma ; (let E R) ; T2]		CONCL
+rule12		value		[V]		PREM
+rule12		step		[(app (abs T R) V) ; R[V/x]]		CONCL
+rule11		typeOf		[Gamma ; E2 ; T1]		PREM
+rule11		typeOf		[Gamma ; E1 ; (arrow T1 T2)]		PREM
+rule11		typeOf		[Gamma ; (app E1 E2) ; T2]		CONCL
+rule10		typeOf		[Gamma ; E2 ; (list T)]		PREM
+rule10		typeOf		[Gamma ; E1 ; T]		PREM
+rule10		typeOf		[Gamma ; (cons E1 E2) ; (list T)]		CONCL
+rule9		typeOf		[Gamma ; (emptyList) ; (list T)]		CONCL
+rule8		typeOf		[Gamma ; (ff) ; (bool)]		CONCL
+rule7		typeOf		[Gamma ; (tt) ; (bool)]		CONCL
+rule6		typeOf		[Gamma ; E ; (int)]		PREM
+rule6		typeOf		[Gamma ; (succ E) ; (int)]		CONCL
+rule5		typeOf		[Gamma ; (zero) ; (int)]		CONCL
+rule4		typeOf		[(gammaAddx T1) ; R ; T2]		PREM
+rule4		typeOf		[Gamma ; (abs T1 R) ; (arrow T1 T2)]		CONCL
+rule3		step		[(filter (cons V1 V2) V3) ; (if (app V3 V1) (cons V1 (filter V2 V3)) (filter V2 V3))]		CONCL
+rule2		step		[(filter (emptyList) V) ; (emptyList)]		CONCL
+rule1		typeOf		[Gamma ; E2 ; (arrow T (bool))]		PREM
+rule1		typeOf		[Gamma ; E1 ; (list T)]		PREM
+rule1		typeOf		[Gamma ; (filter E1 E2) ; (list T)]		CONCL
+filter0		value		[E0]		PREM
+app9		value		[E0]		PREM
+cons11		value		[E0]		PREM
+filter0		step		[E1 ; E1']		PREM
+filter1		step		[E0 ; E0']		PREM
+fix2		step		[E0 ; E0']		PREM
+let3		step		[E0 ; E0']		PREM
+tail4		step		[E0 ; E0']		PREM
+head5		step		[E0 ; E0']		PREM
+if6		step		[E0 ; E0']		PREM
+isZero7		step		[E0 ; E0']		PREM
+pred8		step		[E0 ; E0']		PREM
+app9		step		[E1 ; E1']		PREM
+app10		step		[E0 ; E0']		PREM
+cons11		step		[E1 ; E1']		PREM
+cons12		step		[E0 ; E0']		PREM
+succ13		step		[E0 ; E0']		PREM
+filter0		step		[(filter E0 E1) ; (filter E0 E1')]		CONCL
+filter1		step		[(filter E0 E1) ; (filter E0' E1)]		CONCL
+fix2		step		[(fix E0) ; (fix E0')]		CONCL
+let3		step		[(let E0 (x)E1) ; (let E0' (x)E1)]		CONCL
+tail4		step		[(tail E0) ; (tail E0')]		CONCL
+head5		step		[(head E0) ; (head E0')]		CONCL
+if6		step		[(if E0 E1 E2) ; (if E0' E1 E2)]		CONCL
+isZero7		step		[(isZero E0) ; (isZero E0')]		CONCL
+pred8		step		[(pred E0) ; (pred E0')]		CONCL
+app9		step		[(app E0 E1) ; (app E0 E1')]		CONCL
+app10		step		[(app E0 E1) ; (app E0' E1)]		CONCL
+cons11		step		[(cons E0 E1) ; (cons E0 E1')]		CONCL
+cons12		step		[(cons E0 E1) ; (cons E0' E1)]		CONCL
+succ13		step		[(succ E0) ; (succ E0')]		CONCL
+
+
+
+=== QUERY 8: TABLE ===
+opname
+
+list
+arrow
+arrow
+
+
+
+=== QUERY 9: TABLE ===
+err		r		var		var-number
+
+myerror		rule34		T		0
+

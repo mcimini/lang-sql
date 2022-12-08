@@ -69,3 +69,20 @@ DEFINE Conclusions =
 
 rule UNION ValuePremises UNION StepPremises UNION Conclusions
 
+
+SELECT opname FROM
+(SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS arg FROM Type) 
+WHERE ((arg IS Type VAR) OR (arg IS BOUND AND GET-BOUND-TERM(arg) IS Type VAR))
+
+
+DEFINE ErrOutputVars = 
+( SELECT GET-OPNAME(term) AS err, rulename AS r, GET-VARS(LAST(args, 0)) AS ROWS var 
+  FROM Error, rule
+  WHERE predname = typeOf AND role = CONCL AND GET-OPNAME(term) = GET-OPNAME(LAST(args, 1)) )
+
+DEFINE ErrPremisesVars = 
+( SELECT err, r, GET-VARS(LAST(args, 0)) AS ROWS var 
+  FROM ErrOutputVars, rule
+  WHERE rulename = r AND role = PREM )
+  
+ErrOutputVars EXCEPT ErrPremisesVars
