@@ -23,6 +23,7 @@ rule token = parse
   | "X" { VARBIGX }
   | "-->" { STEP }
   | "--" { LABELEDSTEP }
+  | "-/-" { NOSTEP }
   | "v" { VALUECTX }
   | "e" { EXPCTX }
   | "::=" { GRAMMARASSIGN }
@@ -43,6 +44,7 @@ rule token = parse
   | "value" { VALUEPRED }
   | "%" { DIRECTIVE }
   | "<:" { SUBTYPING }
+  | ";" { SEMICOLON }
   | idLOW             { VARLEX (Lexing.lexeme lexbuf) }
   | idUP             { VARTERM (Lexing.lexeme lexbuf) }
   | eof             { EOF }

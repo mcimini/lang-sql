@@ -25,6 +25,7 @@ rule token = parse
   | "WHERE"               { WHERE }
   | "DISTINCT"               { DISTINCT }
   | "AS"               { AS }
+  | "ROWS*"               { ROWSTAR }
   | "ROWS"               { ROWS }
   | "GROUP"               { GROUP }
   | "BY"               { BY }
@@ -76,6 +77,22 @@ rule token = parse
   | "RNAME"      { RNAME }  
   | "PNAME"      { PNAME }  
   | "DEFINE"      { DEFINE }  
+  | "typeExp"   { TYPEOFEXP }
+  | "typeOutput"   { TYPEOFOUT }
+  | "stepSource"   { STEPSOURCE }
+  | "lstepSource"   { LSTEPSOURCE }
+  | "lstepLabel"   { LSTEPLABEL }
+  | "stepTarget"   { STEPTARGET }
+  | "lstepTarget"   { LSTEPTARGET }
+  | "subtypeLeft"   { SUBTYPELEFT }
+  | "subtypeRight"   { SUBTYPERIGHT }
+  | "CONSTANT"      { CONSTANT }
+  | "conclusions"      { CONCLS }
+  | "premises"      { PREMS }
+  | "TEST"      { TEST }
+  | "CONTAINS"      { CONTAINS }
+  | "DISJOINT"      { DISJOINT }
+  | "EMPTY"      { EMPTY }
   | id             { ID (Lexing.lexeme lexbuf) }
   | category             { CAT (Lexing.lexeme lexbuf) }
   | ['0'-'9']+ as i { INT (int_of_string i) }  
