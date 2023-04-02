@@ -1,4 +1,0 @@
-=== QUERY 7: TABLE ===
-rulename		var
-
-rule2		P1'

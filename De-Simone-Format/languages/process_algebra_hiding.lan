@@ -1,7 +1,0 @@
-Label L ::= (a) | (tau)
-Process P ::= (null) | (a P) | (hideA P) 
-Relation ::= (step Process Label Process)
-
-(a P) --(a)--> P.
-(hideA P) --(tau)--> (hideA P') <== P --(a)--> P'.
-

@@ -1,0 +1,26 @@
+DEFINE ValidConclusions = SELECT * FROM rule WHERE role = CONCL AND predname = step 
+                           AND lstepSource IS Process SKELETON  AND  lstepLabel IS CONSTANT
+
+
+
+DEFINE ValidPositivePrems = SELECT * FROM rule WHERE role = PREM AND predname = step 
+						     AND  lstepSource IS Process VAR  AND  lstepLabel IS CONSTANT  AND  lstepTarget IS Process VAR
+
+
+
+DEFINE ValidNegativePrems = SELECT * FROM rule WHERE role = PREM AND predname = nstep AND lstepSource IS Process VAR AND lstepLabel IS CONSTANT
+
+DEFINE Xs = SELECT rulename, GET-VARS(lstepSource) AS ROWS* var FROM conclusions
+
+DEFINE XsInPremises = SELECT rulename, lstepSource AS var FROM premises
+
+DEFINE Ys = SELECT rulename, lstepTarget AS var FROM ValidPositivePrems
+
+DEFINE VarsInTarget = SELECT rulename, GET-VARS(lstepTarget) AS ROWS* var FROM conclusions
+
+TEST ValidConclusions = conclusions
+TEST (ValidPositivePrems UNION ValidNegativePrems) = premises 
+TEST Xs CONTAINS XsInPremises
+TEST (Xs UNION Ys) DISTINCT ROWS
+TEST (Xs UNION Ys) CONTAINS VarsInTarget
+

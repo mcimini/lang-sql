@@ -1,7 +1,0 @@
-Label L ::= (a) 
-Process P ::= (null) | (a P) | (projectionOne P)  | (projectionTwo P)  | (projectionThree P)  
-Relation ::= (step Process Label Process)
-
-(a P) --(a)--> P.
-(projectionThree P) --(a)-->  (projectionTwo P')  <== P --(a)--> P'.
-(projectionTwo P) --(a)-->  (projectionOne P')  <== P --(a)--> P'.

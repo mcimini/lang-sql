@@ -1,0 +1,49 @@
+=== QUERY 1: TABLE ===
+rulename		predname		args		role
+
+rule3		step		[(hourglass P1 P2) ; (a) ; (hourglass P1' P2')]		CONCL
+rule2		step		[(b P) ; (b) ; P]		CONCL
+rule1		step		[(a P) ; (a) ; P]		CONCL
+
+
+
+=== QUERY 2: TABLE ===
+rulename		predname		args		role
+
+rule3		step		[P2 ; (b) ; P2']		PREM
+rule3		step		[P1 ; (a) ; P1']		PREM
+
+
+
+=== QUERY 3: TABLE ===
+rulename		var
+
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+
+
+
+=== QUERY 4: TABLE ===
+rulename		var
+
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+rule3		P2'
+rule3		P1'
+
+
+
+=== QUERY 5: TABLE ===
+rulename		var
+
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+rule3		P2'
+rule3		P1'
+

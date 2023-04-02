@@ -1,0 +1,76 @@
+=== QUERY 1: TABLE ===
+rulename		predname		args		role
+
+rule6		step		[(par P1 P2) ; (b) ; (par P1 P2')]		CONCL
+rule5		step		[(par P1 P2) ; (b) ; (par P1' P2)]		CONCL
+rule4		step		[(b P) ; (b) ; P]		CONCL
+rule3		step		[(par P1 P2) ; (a) ; (par P1 P2')]		CONCL
+rule2		step		[(par P1 P2) ; (a) ; (par P1' P2)]		CONCL
+rule1		step		[(a P) ; (a) ; P]		CONCL
+
+
+
+=== QUERY 2: TABLE ===
+rulename		predname		args		role
+
+rule6		step		[P2 ; (b) ; P2']		PREM
+rule5		step		[P1 ; (b) ; P1']		PREM
+rule3		step		[P2 ; (a) ; P2']		PREM
+rule2		step		[P1 ; (a) ; P1']		PREM
+
+
+
+=== QUERY 3: TABLE ===
+rulename		var
+
+rule6		P1
+rule6		P2
+rule5		P1
+rule5		P2
+rule4		P
+rule3		P1
+rule3		P2
+rule2		P1
+rule2		P2
+rule1		P
+
+
+
+=== QUERY 4: TABLE ===
+rulename		var
+
+rule6		P1
+rule6		P2
+rule5		P1
+rule5		P2
+rule4		P
+rule3		P1
+rule3		P2
+rule2		P1
+rule2		P2
+rule1		P
+rule6		P2'
+rule5		P1'
+rule3		P2'
+rule2		P1'
+
+
+
+=== QUERY 5: TABLE ===
+rulename		var
+
+rule6		P1
+rule6		P2
+rule5		P1
+rule5		P2
+rule4		P
+rule3		P1
+rule3		P2
+rule2		P1
+rule2		P2
+rule1		P
+rule6		P2'
+rule5		P1'
+rule3		P2'
+rule2		P1'
+

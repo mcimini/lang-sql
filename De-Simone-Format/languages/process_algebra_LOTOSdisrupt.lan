@@ -1,8 +1,0 @@
-Label L ::= (a) 
-Process P ::= (null) | (inA P) | (outA P) | (disrupt P P) 
-Relation ::= (step Process Label Process)
-
-(a P) --(a)--> P.
-(disrupt P1 P2) --(a)--> (disrupt P1' P2) <== P1 --(a)--> P1'.
-(disrupt P1 P2) --(a)--> P2' <== P2 --(a)--> P2'.
-

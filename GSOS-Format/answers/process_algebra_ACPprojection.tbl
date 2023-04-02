@@ -1,0 +1,64 @@
+=== QUERY 1: TABLE ===
+rulename		predname		args		role
+
+rule6		step		[(projectionTwo P1) ; (b) ; (projectionOne P1')]		CONCL
+rule5		step		[(projectionThree P1) ; (b) ; (projectionTwo P1')]		CONCL
+rule4		step		[(b P) ; (b) ; P]		CONCL
+rule3		step		[(projectionTwo P1) ; (a) ; (projectionOne P1')]		CONCL
+rule2		step		[(projectionThree P1) ; (a) ; (projectionTwo P1')]		CONCL
+rule1		step		[(a P) ; (a) ; P]		CONCL
+
+
+
+=== QUERY 2: TABLE ===
+rulename		predname		args		role
+
+rule6		step		[P1 ; (b) ; P1']		PREM
+rule5		step		[P1 ; (b) ; P1']		PREM
+rule3		step		[P1 ; (a) ; P1']		PREM
+rule2		step		[P1 ; (a) ; P1']		PREM
+
+
+
+=== QUERY 3: TABLE ===
+rulename		var
+
+rule6		P1
+rule5		P1
+rule4		P
+rule3		P1
+rule2		P1
+rule1		P
+
+
+
+=== QUERY 4: TABLE ===
+rulename		var
+
+rule6		P1
+rule5		P1
+rule4		P
+rule3		P1
+rule2		P1
+rule1		P
+rule6		P1'
+rule5		P1'
+rule3		P1'
+rule2		P1'
+
+
+
+=== QUERY 5: TABLE ===
+rulename		var
+
+rule6		P1
+rule5		P1
+rule4		P
+rule3		P1
+rule2		P1
+rule1		P
+rule6		P1'
+rule5		P1'
+rule3		P1'
+rule2		P1'
+

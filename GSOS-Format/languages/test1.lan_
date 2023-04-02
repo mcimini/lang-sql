@@ -1,0 +1,11 @@
+Label L ::= (a) | (b)
+Process P ::= (null) | (a P) | (b P) | (sequence P P) 
+
+(a P) --> P.
+(b P) --(b)--> P.
+
+(sequence P1 P2) --(a)--> (sequence P1' P2) <== P1 --(a)--> P1'.
+(sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P1 -/-(a)--> /\ P1 -/-(b)-->.
+
+(sequence P1 P2) --(b)--> (sequence P1' P2) <== P1 --(b)--> P1'.
+(sequence P1 P2) --(b)--> P2' <== P2 --(b)--> P2' /\ P1 -/-(a)--> /\ P1 -/-(b)-->.

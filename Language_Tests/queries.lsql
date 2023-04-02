@@ -1,0 +1,43 @@
+DEFINE WhereEvalUnderBinders = 
+ SELECT * 
+ FROM (SELECT GET-OPNAME(term) AS opname, GET-ARGS(term) AS ROWS* arg FROM Context) 
+ WHERE (arg IS BOUND AND GET-BOUND-TERM(arg) = C)
+
+TEST WhereEvalUnderBinders IS EMPTY
+
+
+DEFINE ErrOutputVars = 
+ SELECT GET-OPNAME(term) AS err, 
+        rulename AS rname,
+		typeOutput AS var
+ FROM Error, rule
+ WHERE predname = typeOf AND role = CONCL AND GET-OPNAME(term) = GET-OPNAME(typeExp)
+ 
+TEST ErrOutputVars = (SELECT * FROM ErrOutputVars WHERE var IS Type VAR)
+
+
+DEFINE ErrPremisesVars = 
+ SELECT err, rulename, GET-VARS(typeOutput) AS ROWS* var
+ FROM ErrOutputVars, rule 
+ WHERE rulename = rname AND role = PREM
+
+TEST (NOT (ErrPremisesVars CONTAINS ErrOutputVars)) OR ErrOutputVars IS EMPTY
+
+
+DEFINE InvariantTypes = 
+ SELECT GET-OPNAME(subtypeLeft) AS type FROM rule
+ WHERE predname = subtype AND role = CONCL AND subtypeLeft = subtypeRight AND (NOT (subtypeLeft IS CONSTANT))
+
+TEST InvariantTypes CONTAINS ROWS type = refType OR (NOT (Type CONTAINS ROWS term = (refType T)))
+
+
+DEFINE BoundByTypes = 
+ SELECT category-info
+ FROM (SELECT GET-OPNAME(term) AS opname,
+       GET-ARGS(term) AS ROWS* arg
+	   FROM Type),
+	   grammar-info
+ WHERE arg IS BOUND AND GET-BOUND-VAR(arg) = obj-var
+  
+TEST (NOT (BoundByTypes CONTAINS ROWS category-info = Expression))
+

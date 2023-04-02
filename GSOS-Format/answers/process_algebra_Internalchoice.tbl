@@ -1,0 +1,48 @@
+=== QUERY 1: TABLE ===
+rulename		predname		args		role
+
+rule4		step		[(choiceInternal P1 P2) ; (tau) ; P2]		CONCL
+rule3		step		[(choiceInternal P1 P2) ; (tau) ; P1]		CONCL
+rule2		step		[(b P) ; (b) ; P]		CONCL
+rule1		step		[(a P) ; (a) ; P]		CONCL
+
+
+
+=== QUERY 2: EMPTY TABLE ===
+
+
+
+=== QUERY 3: TABLE ===
+rulename		var
+
+rule4		P1
+rule4		P2
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+
+
+
+=== QUERY 4: TABLE ===
+rulename		var
+
+rule4		P1
+rule4		P2
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+
+
+
+=== QUERY 5: TABLE ===
+rulename		var
+
+rule4		P1
+rule4		P2
+rule3		P1
+rule3		P2
+rule2		P
+rule1		P
+

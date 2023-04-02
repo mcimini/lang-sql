@@ -1,0 +1,11 @@
+Label L ::= (a) 
+Process P ::= (a P) | (sequence P P) | (loop P) 
+Relation ::= (step Process Label Process)
+
+(a P) --(a)--> P. 
+
+(sequence P1 P2) --(a)--> (sequence P1' P2) <== P1 --(a)--> P1'.
+
+(sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P1 -/-(a)--> .
+
+(loop P1) --(a)--> (sequence P1' (loop P1)) <== P1 --(a)--> P1'.

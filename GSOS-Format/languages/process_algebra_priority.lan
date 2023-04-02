@@ -1,0 +1,8 @@
+Label L ::= (a) | (b)
+Process P ::= (null) | (a P) | (b P) | (priorityAoverB P P) 
+
+(a P) --(a)--> P. 
+(b P) --(b)--> P.
+
+(priorityAoverB P1 P2) --(a)--> P1' <== P1 --(a)--> P1'.
+(priorityAoverB P1 P2) --(b)--> P1' <== P1 --(b)--> P1' /\ P1 -/-(a)-->.

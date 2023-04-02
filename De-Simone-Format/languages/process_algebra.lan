@@ -1,6 +1,0 @@
-Label L ::= (a) | (b)
-Process P ::= (null) | (a P) | (b P) 
-Relation ::= (step Process Label Process)
-
-(a P) --(a)--> P.
-(b P) --(b)--> P.
