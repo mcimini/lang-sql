@@ -28,8 +28,10 @@
 %token VALUEPRED 
 %token DIRECTIVE 
 %token SUBTYPING 
- 
+%token SEMICOLON
+
 %token LABELEDSTEP 
+%token NOSTEP 
 
 %left EXEC
 
@@ -79,12 +81,20 @@ rule :
 formula : 
   | gammaTerm = assumption TURNSTYLE t1 = term COLON t2 = term
     { Formula("typeOf", [gammaTerm ; t1 ; t2]) }
+  | t1 = term SUBTYPING t2 = term 
+    { Formula("subtype", [t1 ; t2]) }
   | t1 = term STEP t2 = term 
     { Formula("step", [t1 ; t2]) }
+  | t1 = term SEMICOLON t2 = term  STEP t3 = term SEMICOLON t4 = term
+    { Formula("step", [t1 ; t2 ; t3 ; t4]) }
   | VALUEPRED t = term 
 	{ Formula("value", [t]) }
   | t1 = term LABELEDSTEP t2 = term STEP t3 = term 
     { Formula("step", [t1 ; t2 ; t3]) }
+  | t1 = term NOSTEP t2 = term STEP
+    { Formula("nstep", [t1 ; t2]) }
+  | LEFTPAR opname = VARLEX ts = list(term) RIGHTPAR
+    { Formula(opname, ts) }
 
 assumption : 
   | GAMMA 

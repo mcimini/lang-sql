@@ -13,6 +13,7 @@
 %token DISTINCT
 %token AS
 %token ROWS
+%token ROWSTAR
 %token GROUP
 %token BY
 %token HAVING
@@ -67,6 +68,24 @@
 
 %token DEFINE
 
+%token TYPEOFEXP
+%token TYPEOFOUT
+%token STEPSOURCE
+%token LSTEPSOURCE
+%token LSTEPLABEL
+%token STEPTARGET
+%token LSTEPTARGET
+%token SUBTYPELEFT
+%token SUBTYPERIGHT
+%token CONSTANT
+%token CONCLS
+%token PREMS
+
+%token TEST
+%token CONTAINS
+%token DISJOINT
+%token EMPTY
+
 
 %token EOF
 
@@ -98,6 +117,14 @@ query:
 	{ TABLE tbl }
   | LPAREN q = query RPAREN
 	{ q }
+  | CONCLS
+	{SELECT(None, STAR, [TABLE RULE], Some(EQUAL(ID "role", CONCL)), None)}
+  | PREMS
+  	{SELECT(None, STAR, [TABLE RULE], Some(EQUAL(ID "role", PREM)), None)}
+  | ROWS id = ID EQUAL e1 = e 
+    {SELECT(None, COLUMNS([(e1, Some(id, None))]), [TABLE(CAT "Type")], None, None)}
+  | ROWS id = ID EQUAL LPAREN opname = ID var = CAT RPAREN
+	{SELECT(None, COLUMNS([(TERM(ConstrDB(opname,[VarDB var])), Some(id, None))]), [TABLE(CAT "Type")], None, None)}
   | SELECT distinctOpt = option(DISTINCT) columns = eStar FROM fromQueries = separated_list(COMMA, query) whereOpt = option(where) groupOpt = option(group)
   	{ SELECT(distinctOpt, columns, fromQueries, whereOpt, groupOpt) }
   | q1 = query UNION q2 = query  
@@ -110,6 +137,8 @@ query:
     { DEFINE(name,q) }
   | INSERT INTO q1 = query q2 = query 
     { INSERT(q1,q2) }
+  | TEST t = test 
+    { TEST(t) }
 
 where:
 	| WHERE f = formula  
@@ -142,7 +171,9 @@ eStar:
 	{ COLUMNS columns }
 
 column: 
-	| e1 = e newnameOpt = option(AS rowOpt = option(ROWS { () }) id = ID {id, rowOpt})
+    | e1 = e newnameOpt = option(AS rowOpt = option(ROWSTAR { true }) id = ID {id, rowOpt})
+    { (e1, newnameOpt) }
+	| e1 = e newnameOpt = option(AS rowOpt = option(ROWS { false }) id = ID {id, rowOpt})
 	{ (e1, newnameOpt) }
 
 e: 
@@ -186,6 +217,24 @@ e:
   	{ COUNT }
     | POSITION LPAREN RPAREN 
   	{ POSITION }
+    | TYPEOFEXP 
+  	{ NTH(ID "args", INT 1) }
+    | TYPEOFOUT 
+  	{ NTH(ID "args", INT 2) }
+    | STEPSOURCE 
+  	{ NTH(ID "args", INT 0) }
+    | LSTEPSOURCE 
+  	{ NTH(ID "args", INT 0) }
+    | LSTEPLABEL 
+  	{ NTH(ID "args", INT 1) }
+    | STEPTARGET 
+  	{ NTH(ID "args", INT 1) }
+    | LSTEPTARGET 
+  	{ NTH(ID "args", INT 2) }
+    | SUBTYPELEFT 
+  	{ NTH(ID "args", INT 0) }
+    | SUBTYPERIGHT 
+  	{ NTH(ID "args", INT 1) }
 
 tag: 
 	| OPNAME
@@ -200,6 +249,8 @@ tag:
 formula:
 	| e1 = e IS BOUND  
 	{ ISBOUND e1}
+	| e1 = e IS CONSTANT  
+	{ ISCONSTANT e1}
 	| e1 = e EQUAL e2 = e 
 	{ EQUAL(e1,e2) }
 	| e1 = e GREATER e2 = e 
@@ -222,8 +273,25 @@ formula:
   	{ f }
 
 	
-
-
+test:
+    | q1 = query EQUAL q2 = query
+    { TEQUAL(q1,q2) }
+    | q1 = query CONTAINS q2 = query
+    { CONTAINS(q1,q2) }
+    | q1 = query DISJOINT q2 = query
+    { DISJOINT(q1,q2) }
+    | q1 = query DISTINCT ROWS
+    { DISTINCTROWS(q1) }
+    | q1 = query IS EMPTY
+    { EMPTY(q1) }
+	| t1 = test AND t2 = test  
+	{ TAND(t1,t2) }
+	| t1 = test OR t2 = test 
+	{ TOR(t1,t2) }
+    | NOT LPAREN t = test RPAREN
+    { TNOT(t) }
+    | LPAREN t = test RPAREN
+  	{ t }
 
 
 
