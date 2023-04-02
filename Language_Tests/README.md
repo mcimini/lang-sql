@@ -36,6 +36,7 @@ range, list length, and reverse.
 </ul>
 Notice: Some files have extension ".lan_" so that they are not part of the tests. To see them fail our tests, please rename them to have extension ".lan" (Example: rename fpl_with_mistakes.lan_ to fpl_with_mistakes.lan)
 
+<br /><br />
 Outcome of our tests: 
 <ul>
 <li> fpl_with_mistakes.lan fails Test (a), Test (b), and Test (c). Passes Test (d).
