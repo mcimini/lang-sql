@@ -56,7 +56,7 @@ Tests are in "queries.lsql" at lines 21-25:  <br />
 Outcome of our tests: 
 <ul>
 <li> If all tests are successful for all the languages in the folder "languages": <b>./lnsql GSOS-Format</b> says that all languages have been processed and returns to the prompt<br />
-	<li> Otherwise: <b>./lnsql GSOS-Format</b> halts retuning a Test_Failed exception and printing the tables that have failed a test. 
+	<li> Otherwise: <b>./lnsql GSOS-Format</b> halts retuning a Test_Failed exception and shows the tables that have failed a test. 
 </ul>
 <br />
 
