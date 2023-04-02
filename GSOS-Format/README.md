@@ -62,9 +62,9 @@ Outcome of our tests:
 
 
 <br />
-Negative tests: (that is, the following tests fail)  
+Negative tests: (<b>The following tests fail</b>)  
 <br />
-The following are variants of process_algebra_sequence.lan where we have introduced elements that do not conform to the GSOS format. 
+The following are modifications of process_algebra_sequence.lan. 
 <br />
 To try negative tests: rename the test from having extension .lan_ to having extension .lan (Example rename test3.lan_ to test3.lan)
 <br />
