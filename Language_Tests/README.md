@@ -36,7 +36,8 @@ range, list length, and reverse.
 </ul>
 Notice: Some files are provided with extension ".lan_" rather than ".lan" so that Lang-SQL does not test them. 
 <br />(This is because failed tests quit the computation).  
-<br />To test those files (and see them fail our tests): rename them to have extension ".lan" (Example: rename fpl_with_mistakes.lan_ to fpl_with_mistakes.lan)
+<br />To test those files (and see them fail our tests): rename them to have extension ".lan". 
+<br />(Example: rename fpl_with_mistakes.lan_ to fpl_with_mistakes.lan)
 
 <br /><br />
 Outcome of our tests: 
