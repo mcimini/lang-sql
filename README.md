@@ -42,9 +42,9 @@ Folders to test:
 	see <a href="Example_queries/"> the "Example_queries" folder </a> for details on these experiments 
 <li> ./lnsql Lang-n-Check <br />
 	see <a href="Lang-n-Check/"> the "Lang-n-Check" folder </a> for details on these experiments 
-<li> ./lnsql Language_Tests <br />
+<li> ./lnsql Language_Tests <i>(examples of language tests in Lang-SQL)</i><br /> 
 	see <a href="Language_Tests/"> the "Language_Tests" folder </a> for details on these experiments 
-<li> ./lnsql ./lnsql GSOS-Format <br />
+<li> ./lnsql ./lnsql GSOS-Format <i>(a validator for the GSOS rule format in Lang-SQL)</i><br /> 
 	see <a href="GSOS-Format/"> the "GSOS-Format" folder </a> for details on these experiments 
 </ul> 
 
