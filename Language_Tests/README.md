@@ -34,8 +34,7 @@ range, list length, and reverse.
 <li> [strong-calculi] strong_stlc_cbv.lan, strong_stlc_cbv_let.lan, strong_stlc_cbv_let_and_letrec.lan, strong_stlc_cbv_letrecWithType.lan, strong_stlc_cbv_let_and_letrec.tbl: Variants of STLC where abstraction, let, and letrec can reduce underneath binders. 
 <li> fpl_cbv_with_grammar_of_dependent_types.lan: Adds the grammar of dependent types to fpl_cbv.lan. (Only the grammar because our queries do not test other parts.) 
 </ul>
-<br />
-Notice: Some files have extension ".lan_". To see them fail our tests, please rename them to have extension ".lan" (Example: rename fpl_with_mistakes.lan_ ro fpl_with_mistakes.lan)
+Notice: Some files have extension ".lan_" so that they are not part of the tests. To see them fail our tests, please rename them to have extension ".lan" (Example: rename fpl_with_mistakes.lan_ to fpl_with_mistakes.lan)
 
 Outcome of our tests: 
 <ul>
