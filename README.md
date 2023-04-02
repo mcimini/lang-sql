@@ -39,13 +39,13 @@ Folders to test:
 <br />
 <ul>
 <li> ./lnsql Example_queries <br />
-	see <a href="Example_queries/"> the "Example_queries" folder </a> for details on these experiments 
+	Examples of Lang-SQL queries: see <a href="Example_queries/"> the "Example_queries" folder </a> for details. 
 <li> ./lnsql Lang-n-Check <br />
-	see <a href="Lang-n-Check/"> the "Lang-n-Check" folder </a> for details on these experiments 
-<li> ./lnsql Language_Tests <i>(examples of language tests in Lang-SQL)</i><br /> 
-	see <a href="Language_Tests/"> the "Language_Tests" folder </a> for details on these experiments 
-<li> ./lnsql GSOS-Format <i>(a validator for the GSOS rule format in Lang-SQL)</i><br /> 
-	see <a href="GSOS-Format/"> the "GSOS-Format" folder </a> for details on these experiments 
+	Reimplementation of a part of <a href="https://github.com/mcimini/TypeSoundnessCertifier">Lang-n-Check</a> in Lang-SQL: see <a href="Lang-n-Check/"> the "Lang-n-Check" folder </a> for details. 
+<li> ./lnsql Language_Tests <br /> 
+	Examples of language tests in Lang-SQL: see <a href="Language_Tests/"> the "Language_Tests" folder </a> for details. 
+<li> ./lnsql GSOS-Format <br /> 
+	A validator for the GSOS rule format in Lang-SQL: see <a href="GSOS-Format/"> the "GSOS-Format" folder </a> for details. 
 </ul> 
 
 
