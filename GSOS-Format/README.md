@@ -79,11 +79,11 @@ To try negative tests: rename the test from having extension .lan_ to having ext
 <li> test7.lan: premise of rule #3 is (a P) --(a)--> P1'. That is, source of premise is not a variable.
 <li> test8.lan: premise of rule #3 is P1 -- P1 --> P1'. That is, label of premise is not a constant.
 <li> test9.lan: premise of rule #3 is P1 --(a)--> (a P). That is, target of premise is not a variable.
-<li> test-10.lan: premise of rule #3 is P1' --(a)--> P1'. That is, the source P1' of the premise is not from the source of the conclusion.
-<li> test-11.lan: premise of rule #3 is P1 --(a)--> P2. That is, the target P2 of the premise is not distinct from the variables in the source of the conclusion.
-<li> test-12.lan: conclusion of rule #3 is(sequence P1 P2) --(a)--> (sequence P1' P3) <== P1 --(a)--> P1'. That is, P3 in the conclusion is not from the targets of premises not the source of the conclusion. 
-<li> test-13.lan: premise of rule #6 is P2 -/-(a)--> P3. That is, it is not a valid shape of negative labeled transition formula. This is a parser error because formulae P -/-(a)--> P are not recognized by the parser. 
-<li> test-14.lan: rule #6 is (sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P2' -/-(a)-->. That is, the source of the negative premise does not come from the source of the conclusion. 
+<li> testt-10.lan: premise of rule #3 is P1' --(a)--> P1'. That is, the source P1' of the premise is not from the source of the conclusion.
+<li> testt-11.lan: premise of rule #3 is P1 --(a)--> P2. That is, the target P2 of the premise is not distinct from the variables in the source of the conclusion.
+<li> testt-12.lan: conclusion of rule #3 is(sequence P1 P2) --(a)--> (sequence P1' P3) <== P1 --(a)--> P1'. That is, P3 in the conclusion is not from the targets of premises not the source of the conclusion. 
+<li> testt-13.lan: premise of rule #6 is P2 -/-(a)--> P3. That is, it is not a valid shape of negative labeled transition formula. This is a parser error because formulae P -/-(a)--> P are not recognized by the parser. 
+<li> testt-14.lan: rule #6 is (sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P2' -/-(a)-->. That is, the source of the negative premise does not come from the source of the conclusion. 
 </ul>	
 
 
