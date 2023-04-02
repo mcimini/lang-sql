@@ -9,38 +9,13 @@ error		rule9		T
 
 
 
-=== QUERY 3: TABLE ===
-err		rname		var
-
-error		rule9		T
+=== QUERY 3: EMPTY TABLE ===
 
 
 
-=== QUERY 4: TABLE ===
-err		rulename		var
-
-error		rule9		T'
+=== QUERY 4: EMPTY TABLE ===
 
 
 
 === QUERY 5: EMPTY TABLE ===
-
-
-
-=== QUERY 6: TABLE ===
-type
-
-refType
-
-
-
-=== QUERY 7: EMPTY TABLE ===
-
-
-
-=== QUERY 8: EMPTY TABLE ===
-
-
-
-=== QUERY 9: EMPTY TABLE ===
 
