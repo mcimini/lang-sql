@@ -62,11 +62,12 @@ Outcome of our tests:
 
 
 <br />
-Negative tests (that is, thes following tests fail)  
+Negative tests: (that is, the following tests fail)  
 <br />
 The following are variants of process_algebra_sequence.lan where we have introduced elements that do not conform to the GSOS format. 
 <br />
 To try negative tests: rename the test from having extension .lan_ to having extension .lan (Example rename test3.lan_ to test3.lan)
+<br />
 <br />
 <ul>
 <li> test1.lan: contains the rule (a P) --> P. That is, an ordinary transition rather than a labeled transition.
