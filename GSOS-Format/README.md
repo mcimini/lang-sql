@@ -72,18 +72,18 @@ To try negative tests: rename the test from having extension .lan_ to having ext
 <ul>
 <li> test1.lan: contains the rule (a P) --> P. That is, an ordinary transition rather than a labeled transition.
 <li> test2.lan: contains the rule X --(a)--> X. That is, the rule does not apply to a form (op P1 P2 ...).
-<li> test3.lan: premise of rule #2 is P1 --> P1'. That is, an ordinary transition rather than a labeled transition.
+<li> test3.lan: premise of rule #3 is P1 --> P1'. That is, an ordinary transition rather than a labeled transition.
 <li> test4.lan: contains the rule (a (a P)) --(a)--> P. That is, conclusion is not of the form a form (op P1 P2 ...) for variables P1, P2, ... 
 <li> test5.lan: contains the rule (a P) -- P --> P. That is, label of conclusion is not a constant
 <li> test6.lan: contains the rule for the replication operator (repl P) --(a)--> P' <== (par (repl P)) --(a)--> P'. That is, source of premise is not a variable,
-<li> test7.lan: premise of rule #2 is (a P) --(a)--> P1'. That is, source of premise is not a variable.
-<li> test8.lan: premise of rule #2 is P1 -- P1 --> P1'. That is, label of premise is not a constant.
-<li> test9.lan: premise of rule #2 is P1 --(a)--> (a P). That is, target of premise is not a variable.
-<li> test-10.lan: rule #2 is (par P1 P2) --(a)--> (par P1' P2) <== P1' --(a)--> P1'. That is, the source P1' of the premise is not from the source of the conclusion.
-<li> test-11.lan: rule #2 is (par P1 P2) --(a)--> (par P1 P2) <== P1 --(a)--> P2. That is, the target P2 of the premise is not distinct from the variables in the source of the conclusion.
-<li> test-12.lan: rule #2 is (par P1 P2) --(a)--> (par P1' P3) <== P1 --(a)--> P1'. That is, P3 in the conclusion is not from the targets of premises not the source of the conclusion. 
-<li> test-13.lan: premise of rule #3 is P2 -/-(a)--> P3. That is, it is not a valid shape of negative labeled transition formula. This is a parser error because formulae P -/-(a)--> P are not recognized by the parser. 
-<li> test-14.lan: rule #3 is (sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P2' -/-(a)-->. That is, the source of the negative premise does not come from the source of the conclusion. 
+<li> test7.lan: premise of rule #3 is (a P) --(a)--> P1'. That is, source of premise is not a variable.
+<li> test8.lan: premise of rule #3 is P1 -- P1 --> P1'. That is, label of premise is not a constant.
+<li> test9.lan: premise of rule #3 is P1 --(a)--> (a P). That is, target of premise is not a variable.
+<li> test-10.lan: premise of rule #3 is P1' --(a)--> P1'. That is, the source P1' of the premise is not from the source of the conclusion.
+<li> test-11.lan: premise of rule #3 is P1 --(a)--> P2. That is, the target P2 of the premise is not distinct from the variables in the source of the conclusion.
+<li> test-12.lan: conclusion of rule #3 is(sequence P1 P2) --(a)--> (sequence P1' P3) <== P1 --(a)--> P1'. That is, P3 in the conclusion is not from the targets of premises not the source of the conclusion. 
+<li> test-13.lan: premise of rule #6 is P2 -/-(a)--> P3. That is, it is not a valid shape of negative labeled transition formula. This is a parser error because formulae P -/-(a)--> P are not recognized by the parser. 
+<li> test-14.lan: rule #6 is (sequence P1 P2) --(a)--> P2' <== P2 --(a)--> P2' /\ P2' -/-(a)-->. That is, the source of the negative premise does not come from the source of the conclusion. 
 </ul>	
 
 
