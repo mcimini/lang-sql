@@ -13,6 +13,7 @@ let e_to_term e = match e with
 
 let rec eval_formula (lan : language) (attributes : string list) (f : Query.formula) (count : int) (position : int) (row : rowDB) : bool = match f with 
 | ISBOUND(e) -> e_isTerm (eval_e lan attributes count position row e) && termDB_isBound (e_getTerm (eval_e lan attributes count position row e))
+| ISCONSTANT(e) -> e_isTerm (eval_e lan attributes count position row e) && termDB_isConstant (e_getTerm (eval_e lan attributes count position row e))
 | EQUAL(e1,e2) -> e_equal (eval_e lan attributes count position row e1) (eval_e lan attributes count position row e2)
 | GREATER(e1,e2) -> let e1' = (eval_e lan attributes count position row e1) in let e2' = (eval_e lan attributes count position row e2) in e_isInt e1' && e_isInt e2' && e_getInt e1' > e_getInt e2'
 | ISDERIVEDBY(e,cname) -> let evaluated = (eval_e lan attributes count position row e) in (match evaluated with 

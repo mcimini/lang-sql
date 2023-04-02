@@ -7,6 +7,7 @@ type cname = string
 type rname = string
 type pname = string
 
+
 type termDB= 
 	| ConstrDB of string * (termDB list)
 	| VarDB of string
@@ -55,7 +56,7 @@ type table =
 	the option contains the new name as id.
 	and whethere ROWS was present, as an option of unit. 
  *)
-type rowsOption = unit option
+type rowsOption = bool option
 type column = e * ((id * rowsOption) option)
 
 type eStar = 
@@ -65,6 +66,7 @@ type eStar =
 
 type formula = 
 	| ISBOUND of e 
+	| ISCONSTANT of e 
 	| EQUAL of e * e
 	| GREATER of e * e	
 	| ISDERIVEDBY of e * cname		
@@ -89,12 +91,23 @@ type query =
 	| INTERSECT of query * query 
 	| DEFINE of cname * query 
 	| INSERT of query * query 
+	| TEST of test
+and test = 
+	| TEQUAL of query * query 
+	| CONTAINS of query * query 
+	| DISJOINT of query * query 
+	| EMPTY of query 
+	| DISTINCTROWS of query 
+	| TAND of test  * test  
+	| TOR of test  * test  
+	| TNOT of test 
 
 let term_wrap_in_ID str = ID str
 let term_wrap_in_NAME str = NAME str
 let term_wrap_in_TERM t = TERM t
 let termDB_isBound t = match t with | AbsDB(_,_) -> true | _ -> false
 let termDB_isConstr t = match t with | ConstrDB(_,_) -> true | _ -> false
+let termDB_isConstant t = match t with | ConstrDB(_,[]) -> true | _ -> false
 let termDB_isVar t = match t with | VarDB(_) -> true | _ -> false
 
 let e_carries_name e : (bool * string) = match e with 

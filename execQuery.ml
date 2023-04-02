@@ -4,8 +4,11 @@ open List
 open Query
 open Language
 open Language_table
+open Pretty_printerTable
 open Eval_e
 open Eval_formula
+
+exception Test_Failed of string
 
 let env : ((cname * query) list) ref = ref []
 
@@ -45,28 +48,32 @@ let groups_select_and_return_table (lan : language) (eStar : eStar) (groups : gr
 	let newGroups = { (groups_initialize (eStar_to_attributes eStar groups.attributes)) with groups = newListsOfRows } in 
 	 groups_to_table newGroups
 
-let row_expand_ASROWS (attribute : attrname) (index : int) (row : rowDB) : rowDB list = 
+let row_expand_ASROWS (attribute : attrname) (starBool : bool) (index : int) (row : rowDB) : rowDB list = 
 	let listToExpand : e = List.nth row index in 
 	if not (e_isList listToExpand) then raise(Failure("row_expand_ASROWS: asked to expand a ROWS LIST but it is not a LIST")) else 
 	let listToExpand : e list = e_getListOFes listToExpand in 
 	let rowWithoutROWSattribute = List.filteri (fun i row -> not (i = index)) row in 
-	 List.mapi (fun i e -> rowWithoutROWSattribute @ [e ; INT i]) listToExpand
+	 if starBool then List.map (fun e -> rowWithoutROWSattribute @ [e]) listToExpand
+             else List.mapi (fun i e -> rowWithoutROWSattribute @ [e ; INT i]) listToExpand
 		
 
 let table_expand_ASROWS (eStar : eStar) (table : tableDB) : tableDB = match eStar with 
 | STAR -> table
 | COLUMNS(columns) -> 
 					let attribute_ROWS : attrname list = List.map column_to_attribute (List.filter column_is_ROWS columns) in 
-					if attribute_ROWS = [] then table else
-					if (List.length attribute_ROWS) > 1  then raise(Failure("table_expand_ASROWS: Only one AS ROWS column is support at the moment")) else	
-					let attribute_ROWS : attrname = List.hd attribute_ROWS in 
+					let attributeWithrows = List.filter column_is_ROWS columns in 
+					if attributeWithrows = [] then table else
+					if (List.length attributeWithrows) > 1  then raise(Failure("table_expand_ASROWS: Only one AS ROWS column is support at the moment")) 	
+					else let (attribute_ROWS, star) : (attrname * rowsOption) = column_to_pair (List.hd attributeWithrows) in 
+					let starBool = get star in 
 					let attributes : attrname list = List.map column_to_attribute columns in 
 					let indexes_of_ROWS = find_indexes attributes attribute_ROWS [] 0 in 
 					if not ((List.length indexes_of_ROWS) = 1) then raise(Failure("table_expand_ASROWS: attribute with ROWS found 0, or more than once in attributes")) else	
 					let index_of_ROWS : int = List.hd indexes_of_ROWS in 
-					let rowsWithROWSexpanded : rowDB list = List.concat (List.map (row_expand_ASROWS attribute_ROWS index_of_ROWS) table.data) in 
+					let rowsWithROWSexpanded : rowDB list = List.concat (List.map (row_expand_ASROWS attribute_ROWS starBool index_of_ROWS) table.data) in 
 					let attribute_NOT_ROWS : attrname list = List.map column_to_attribute (List.filter column_isNOT_ROWS columns) in 
-					  table_make (attribute_NOT_ROWS @ [attribute_ROWS ; attribute_add_num attribute_ROWS]) rowsWithROWSexpanded  
+					if starBool then table_make (attribute_NOT_ROWS @ [attribute_ROWS]) rowsWithROWSexpanded
+					        else table_make (attribute_NOT_ROWS @ [attribute_ROWS ; attribute_add_num attribute_ROWS]) rowsWithROWSexpanded  
 					
 let rec language_table_lookupByID (lan : language) (lanTbl : language_table) (tableID : table) : tableDB = match tableID with 
 | GRAMMAR -> lanTbl.grammar
@@ -106,8 +113,41 @@ and execQuery (lan : language) (lanTbl : language_table) (query : query) : table
 							[interscetTable ; interscetTable ; interscetTable ; interscetTable ; interscetTable ; interscetTable]
 	| DEFINE(name,q) -> let _ = env :=  (name,q) :: (!env) in []
 	| INSERT(q1,q2) -> raise(Failure("INSERT: Not implemented yet"))
-							
+	| TEST(EMPTY(q)) -> let table = List.last (execQuery lan lanTbl q) in if table.data = [] then [table ; table ; table ; table ; table ; table] else raise(Test_Failed(print_table table)) 
+	| TEST(CONTAINS(q1,q2)) -> let table1 = List.last (execQuery lan lanTbl q1) in let table2 = List.last (execQuery lan lanTbl q2) in  
+						 if table_contains table1 table2 then [table1 ; table1 ; table1 ; table1 ; table1 ; table1] else raise(Test_Failed(print_table table1 ^ "\n\n" ^ print_table table2)) 
+ 	| TEST(TEQUAL(q1,q2)) -> let table1 = List.last (execQuery lan lanTbl q1) in let table2 = List.last (execQuery lan lanTbl q2) in  
+						 if table_contains table1 table2 && table_contains table2 table1 then [table1 ; table1 ; table1 ; table1 ; table1 ; table1] else raise(Test_Failed(print_table table1 ^ "\n\n\n" ^ print_table table2)) 
+						 (* if table1 = table2 then [table1 ; table1 ; table1 ; table1 ; table1 ; table1] else raise(Test_Failed(print_table table1 ^ "\n\n\n" ^ print_table table2)) 
+						 *)
+	| TEST(TNOT(t)) -> let tableWithBool = (try (true, List.last (execQuery lan lanTbl (TEST(t)))) with Test_Failed(s) -> (false, emptyTable))
+                        in let table = snd tableWithBool in let tables = [table ; table ; table ; table ; table ; table] in 
+						if fst tableWithBool then raise(Test_Failed(print_table (List.last tables))) else tables
+	| TEST(DISJOINT(q1,q2)) -> let table1 = List.last (execQuery lan lanTbl q1) in let table2 = List.last (execQuery lan lanTbl q2) in  
+	 					 if table_disjoint table1 table2 then [table1 ; table1 ; table1 ; table1 ; table1 ; table1] else raise(Test_Failed(print_table table1 ^ "\n\n" ^ print_table table2)) 
+	| TEST(DISTINCTROWS(q)) -> let table = List.last (execQuery lan lanTbl q) in if table_distinctRows table then [table ; table ; table ; table ; table ; table] else raise(Test_Failed(print_table table)) 
+	| TEST(TAND(t1,t2)) -> let table1WithBool = (try (true, List.last (execQuery lan lanTbl (TEST(t1)))) with Test_Failed(s) -> (false, emptyTable)) in 
+							if not(fst table1WithBool) then raise(Test_Failed(print_table (snd table1WithBool))) 
+						    else 
+							 let table2WithBool = (try (true, List.last (execQuery lan lanTbl (TEST(t2)))) with Test_Failed(s) -> (false, emptyTable)) in 
+							if not(fst table2WithBool) then raise(Test_Failed(print_table (snd table2WithBool))) 
+						    else [emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable]
+	| TEST(TOR(t1,t2)) -> let table1WithBool = (try (true, List.last (execQuery lan lanTbl (TEST(t1)))) with Test_Failed(s) -> (false, emptyTable)) in 
+							if fst table1WithBool then [emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable]
+						    else 
+							 let table2WithBool = (try (true, List.last (execQuery lan lanTbl (TEST(t2)))) with Test_Failed(s) -> (false, emptyTable)) in 
+							if fst table2WithBool then [emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable]
+						    else raise(Test_Failed(print_table (snd table2WithBool))) 
 (* 
+	| TEST(DISJOINT(q1,q2)) -> let table1 = List.last (execQuery lan lanTbl q1) in let table2 = List.last (execQuery lan lanTbl q2) in  
+						if not(table_contains table1 table2) && not(table_contains table2 table1) then [emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable] else raise(Test_Failed(print_table table1 ^ "\n\n\n" ^ print_table table2)) 
+						(*  if (not(subtable table1 table2) || not(subtable table2 table1)) then [emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable ; emptyTable] else raise(Test_Failed(print_table table1 ^ "\n\n\n" ^ print_table table2)) 
+							*)
+	
+					if attribute_ROWS = [] then table else
+					if (List.length attribute_ROWS) > 1  then raise(Failure("table_expand_ASROWS: Only one AS ROWS column is support at the moment")) else	
+					let attribute_ROWS : attrname = List.hd attribute_ROWS in 
+	
 		let productOfTablesInFrom = List.fold_left table_product (List.hd tablesInFrom) (List.tl tablesInFrom) in 
 		let tableAfterWhere = if is_none whereOption then productOfTablesInFrom else let a = try (get whereOption) with | _ -> raise(Failure("a")) in table_filter lan productOfTablesInFrom (get whereOption)  in 
 		let groupsAfterGroup : groupsDB = if is_none groupOption then table_makeOneGroup tableAfterWhere else let a = try (get groupOption) with | _ -> raise(Failure("b")) in table_groupBy tableAfterWhere (fst (get groupOption)) in 

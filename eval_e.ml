@@ -27,6 +27,7 @@ let rec eval_e (lan : language) (attributes : string list) (count : int) (positi
 | GETVARS(e) -> (match (eval_e lan attributes count position row e) with 
 				| TERM(t) -> LIST(List.map term_wrap_in_TERM (termDB_getVars t))  
 				| LIST(es) -> e_list_concat (List.map (fun e -> eval_e lan attributes count position row (GETVARS(e))) es) 
+				| NAME(name) -> LIST([TERM(VarDB name)])
 				)
 | ADDINDEX(e1,e2) ->  let pair = e_carries_name (eval_e lan attributes count position row e1) in if fst pair then let var = snd pair in let n = e_getInt (eval_e lan attributes count position row e2) in METAVAR(var ^ string_of_int n) else raise(Failure("ADD-INDEX case failure"))
 | ADDINDEXTAG(tag,e1,e2) -> let pair = e_carries_name (eval_e lan attributes count position row e1) in if fst pair then let name = snd pair in let n = e_getInt (eval_e lan attributes count position row e2) in NAME(name ^ string_of_int n) else raise(Failure("ADD-INDEXTAG case failure"))

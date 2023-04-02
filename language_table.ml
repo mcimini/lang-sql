@@ -52,6 +52,7 @@ let initial_table =
 	}
 
 let table_make (attributes : attrname list) (data : rowDB list) : tableDB = { attributes = attributes ; data = data }
+let emptyTable : tableDB = table_make [] [] 
 
 let attribute_make_column_SimpleByName (name : attrname) : column = (ID(name),None)
 let attribute_add_num (name : attrname) :  attrname = name ^ "-number"
@@ -59,6 +60,7 @@ let attribute_add_num (name : attrname) :  attrname = name ^ "-number"
 let column_is_ROWS (column : column) : bool = if is_none (snd column) then false else let rowsOption = get (snd column) in is_some (snd rowsOption)
 let column_isNOT_ROWS (column : column) : bool = not (column_is_ROWS column)
 let column_to_attribute (column : column) : attrname = if is_none (snd column) then e_getAttribute (fst column) else fst (get (snd column))
+let column_to_pair (column : column) : (attrname * rowsOption) = (fst (get (snd column)),  snd (get (snd column)))
 let attributes_to_eStar (attributes : attrname list) : eStar = COLUMNS(List.map attribute_make_column_SimpleByName attributes)
 
 
@@ -111,10 +113,29 @@ let rec groups_groupBy (groups : groupsDB) (ids : id list) : groupsDB =
 
 let groups_to_table (groups : groupsDB) : tableDB = { attributes = groups.attributes ; data = List.concat groups.groups }
 
+let table_contains (t1 : tableDB) (t2 : tableDB) : bool = 
+	let contains l1 l2 = if List.filter (fun a -> not(List.mem a l1)) l2 = [] then true else false 
+    in 
+	if false then raise(Failure(dump(t1.data) ^ dump(t2.data) ^ dump(if List.filter (fun a -> not(List.mem a t1.data)) t2.data = [] then "empty" else "no")))
+    else contains t1.data t2.data
 
+let table_disjoint (t1 : tableDB) (t2 : tableDB) : bool = 
+	let l1 = t1.data in let l2 = t2.data in 
+	let l1minusl2 = List.filter (fun a -> not(List.mem a l2)) l1 in 
+	let l2minusl1 = List.filter (fun a -> not(List.mem a l1)) l2 in 
+	if (l1minusl2 @ l2minusl1) = []  then raise(Failure(dump(t1.data) ^ dump(t2.data) ^ dump(if List.filter (fun a -> not(List.mem a t1.data)) t2.data = [] then "empty" else "no")))
+    else table_contains t1 t2
 
+let removeDuplicates(list') =
+  let rec removeDuplicatesHelper(list) = match List.rev(list) with
+  |[]->[]
+  |head::tail -> if List.mem head tail then
+                  removeDuplicatesHelper(List.rev(tail))
+                 else [head]@removeDuplicatesHelper(List.rev(tail))
+  in List.rev(removeDuplicatesHelper(list'));;
 
-
+let table_distinctRows (table : tableDB) : bool = table.data = (removeDuplicates table.data)
+	
 
 	(*
 		
