@@ -5,6 +5,13 @@ type token =
   | WHERE
   | VAR
   | UNION
+  | TYPEOFOUT
+  | TYPEOFEXP
+  | TEST
+  | SUBTYPERIGHT
+  | SUBTYPELEFT
+  | STEPTARGET
+  | STEPSOURCE
   | STAR
   | SKELETON
   | SEMICOLON
@@ -12,8 +19,10 @@ type token =
   | RULE
   | RSQUARE
   | RPAREN
+  | ROWSTAR
   | ROWS
   | RNAME
+  | PREMS
   | PREM
   | POSITION
   | PNAME
@@ -21,6 +30,9 @@ type token =
   | OPNAME
   | NTH
   | NOT
+  | LSTEPTARGET
+  | LSTEPSOURCE
+  | LSTEPLABEL
   | LSQUARE
   | LPAREN
   | LAST
@@ -45,12 +57,17 @@ type token =
   | EXCEPT
   | EQUAL
   | EOF
+  | EMPTY
   | DISTINCT
+  | DISJOINT
   | DERIVED
   | DEFINE
   | DECLARATIONP
   | COUNT
+  | CONTAINS
   | CONSTRUCTED
+  | CONSTANT
+  | CONCLS
   | CONCL
   | COMMA
   | CNAME

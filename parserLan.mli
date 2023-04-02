@@ -12,9 +12,11 @@ type token =
   | SUBTYPING
   | SUBSTBAR
   | STEP
+  | SEMICOLON
   | RIGHTSQUARE
   | RIGHTPAR
   | PROVIDED
+  | NOSTEP
   | MID
   | LEFTSQUARE
   | LEFTPAR
