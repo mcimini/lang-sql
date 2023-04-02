@@ -18,9 +18,8 @@ Tests are in the file "queries.lsql": <br />
 <li> Test (b) (Line 16 and Line 24): Errors Must Be Typed at Any Type
 <li> Test (c) (Line 31): References Must Be Invariant 
 <li> Test (d) (Line 42): There Are No Types That Bind Expressions
-<ul>
+</ul>
 
-<br />
 Languages are in the folder "languages": <br />
 <ul>
 <li> fpl_with_mistakes.lan: A simply-typed lambda-calculus with references and errors. This language intentionally contains mistakes or unintended features so that Test (a), Test (b), and Test (c) fail. 
@@ -39,6 +38,7 @@ range, list length, and reverse.
 Notice: Some files have extension ".lan_". To see them fail our tests, please rename them to have extension ".lan" (Example: rename fpl_with_mistakes.lan_ ro fpl_with_mistakes.lan)
 
 Outcome of our tests: 
+<ul>
 <li> fpl_with_mistakes.lan fails Test (a), Test (b), and Test (c). Passes Test (d).
 <li> fpl_fixed_testA.lan passes Test (a), fails Test (b), and Test (c). Passes Test (d).
 <li> fpl_fixed_testA_B.lan passes Test (a) and Test (b), fails Test (c). Passes Test (d).
