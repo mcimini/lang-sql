@@ -20,7 +20,7 @@ Tests are in the file "queries.lsql": <br />
 <li> Test (d) (Line 42): There Are No Types That Bind Expressions
 </ul>
 
-Languages are in the folder "languages": <br />
+Languages are in the folder "languages". <br />
 <ul>
 <li> fpl_with_mistakes.lan: A simply-typed lambda-calculus with references and errors. This language intentionally contains mistakes or unintended features so that Test (a), Test (b), and Test (c) fail. 
 <li> fpl_fixed_testA.lan: this is fpl_with_mistakes where we have fixed Test (a).
