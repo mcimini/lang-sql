@@ -218,9 +218,9 @@ e:
     | POSITION LPAREN RPAREN 
   	{ POSITION }
     | TYPEOFEXP 
-  	{ NTH(ID "args", INT 1) }
+  	{ LAST(ID "args", INT 1) }
     | TYPEOFOUT 
-  	{ NTH(ID "args", INT 2) }
+  	{ LAST(ID "args", INT 0) }
     | STEPSOURCE 
   	{ NTH(ID "args", INT 0) }
     | LSTEPSOURCE 

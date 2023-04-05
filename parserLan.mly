@@ -79,7 +79,7 @@ rule :
     { let unusedVar = ruleCounter := !ruleCounter + 1 in Rule("rule" ^ string_of_int (!ruleCounter),premises,f) }
 
 formula : 
-  | gammaTerm = assumption TURNSTYLE t1 = term COLON t2 = term
+  | gammaTerm = assumption option(MID VARTERM { true }) TURNSTYLE t1 = term COLON t2 = term
     { Formula("typeOf", [gammaTerm ; t1 ; t2]) }
   | t1 = term SUBTYPING t2 = term 
     { Formula("subtype", [t1 ; t2]) }

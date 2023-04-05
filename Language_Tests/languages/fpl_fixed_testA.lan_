@@ -6,23 +6,23 @@ Error ::= (error V1)
 Heap H ::= (map L V) 
 Context C ::= [] | (app C e) | (app v C) | (succ C) | (ref C) | (deref C) | (assign C e) | (assign v C) | (error C) 
 
-Gamma |- (abs T1 R) : (arrow T1 T2) <== Gamma, x : T1 |- R : T2.
+Gamma | Sigma |- (abs T1 R) : (arrow T1 T2) <== Gamma, x : T1 | Sigma |- R : T2.
 
-Gamma |- (app E1 E2) : T2 <== Gamma |- E1 : (arrow T1 T2) /\ Gamma |- E2 : T1.
+Gamma | Sigma |- (app E1 E2) : T2 <== Gamma | Sigma |- E1 : (arrow T1 T2) /\ Gamma | Sigma |- E2 : T1.
 
-Gamma |- (zero ) : (int ).
+Gamma | Sigma |- (zero ) : (int ).
 
-Gamma |- (succ E) : (int ) <== Gamma |- E : (int ). 
+Gamma | Sigma |- (succ E) : (int ) <== Gamma | Sigma |- E : (int ). 
 
-Gamma |- (floatNum E1 E2) : (float ) <== Gamma |- E1 : (int ) /\ Gamma |- E2 : (int ).
+Gamma | Sigma |- (floatNum E1 E2) : (float ) <== Gamma | Sigma |- E1 : (int ) /\ Gamma | Sigma |- E2 : (int ).
 
-Gamma |- (ref E) : (refType T) <== Gamma |- E : T.
+Gamma | Sigma |- (ref E) : (refType T) <== Gamma | Sigma |- E : T.
 
-Gamma |- (deref E) : T <== Gamma |- E : (refType T).
+Gamma | Sigma |- (deref E) : T <== Gamma | Sigma |- E : (refType T).
 
-Gamma |- (assign E1 E2) : T <== Gamma |- E1 : (refType T) /\ Gamma |- E2 : T. 
+Gamma | Sigma |- (assign E1 E2) : T <== Gamma | Sigma |- E1 : (refType T) /\ Gamma | Sigma |- E2 : T. 
 
-Gamma |- (error E) : T <== Gamma |- E : T.
+Gamma | Sigma |- (error E) : T <== Gamma | Sigma |- E : T.
 
 
 (app (abs T R) V) ; H --> R[V/x] ; H <== value V.

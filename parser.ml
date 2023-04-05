@@ -3854,7 +3854,7 @@ and _menhir_run5 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
     ((let _1 = () in
     let _v : 'tv_e = 
 # 223 "parser.mly"
-   ( NTH(ID "args", INT 2) )
+   ( LAST(ID "args", INT 0) )
 # 3859 "parser.ml"
      in
     _menhir_goto_e _menhir_env _menhir_stack _menhir_s _v) : 'freshtv382)
@@ -3868,7 +3868,7 @@ and _menhir_run6 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
     ((let _1 = () in
     let _v : 'tv_e = 
 # 221 "parser.mly"
-   ( NTH(ID "args", INT 1) )
+   ( LAST(ID "args", INT 1) )
 # 3873 "parser.ml"
      in
     _menhir_goto_e _menhir_env _menhir_stack _menhir_s _v) : 'freshtv380)
