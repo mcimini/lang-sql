@@ -4,6 +4,7 @@ Value V ::= (abs T1 R2) | (zero ) | (pair V1 V2) | (succ V1) | (tt ) | (ff ) | (
 Label L ::= (l1 ) | (l2 ) | (l3 ) | (l4 )
 Error ::= (error V1)
 Heap H ::= (map L V) 
+LocationEnvironment Sigma ::= (map L T) 
 Context C ::= [] | (app C e) | (app v C) | (succ C) | (ref C) | (deref C) | (assign C e) | (assign v C) | (error C) 
 
 Gamma | Sigma |- (abs T1 R) : (arrow T1 T2) <== Gamma, x : T1 | Sigma |- R : T2.
