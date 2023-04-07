@@ -1,0 +1,8 @@
+Label L ::= (a) | (b)
+Process P ::= (null) | (a P) | (restrictA P) | (restrictB P) 
+Relation ::= (step Process Label Process)
+
+(a P) --(a)--> P.
+(restrictA P) --(b)--> (restrictA P') <== P --(b)--> P'.
+(restrictB P) --(a)--> (restrictB P') <== P --(a)--> P'.
+

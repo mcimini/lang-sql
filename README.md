@@ -8,7 +8,7 @@ Author: Matteo Cimini (matteo_cimini@uml.edu)
 Requirements: 
 <br />
 <ul>
-<li> To compile and run: Ocaml with the Batteries and Menhir packages is required.
+<li> To compile and run: Ocaml with the Batteries packages is required.
 </ul>
 
 Quick usage: 
